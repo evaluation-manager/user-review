@@ -1,6 +1,8 @@
 import React from 'react';
 import {UserAvaliacao} from './userAvaliacao'
 import { useState } from 'react';
+import Select from '../../components/select/Select';
+import Submit from '../../components/button/Submit';
 export const Avaliacao=()=>{
 //rendeizar teste apenas se o usuairo informar a secretaria
 const [exibir, setExibir]=useState(false);
@@ -14,24 +16,41 @@ setExibir(!exibir);
     return (
         <>
         <h1>Olá por aqui me avalie</h1>
-        <label>Tipo de instituição</label>
-        <select>
+       
+
+       <Select 
+       text="Tipo de instituição"
+        name="select"
+
+        />
+        <Select 
+       text="Tipo de Serviço"
+        name="select"
+
+        />
+        
+      
+       {/*  <select>
             <option>Semec</option>
             <option>Semed</option>
             <option>SMTT</option>
         </select>
+
         <label>Tipo de serviço</label>
         <select>
             <option>Marca serviço</option>
             <option>Pagamentos</option>
             <option>Abrir empresa</option>
         </select>
-        <button onClick={toggle}>
-          {!exibir? 'Começar' :  <UserAvaliacao />} 
-            
-        </button>
+        */}
 
-         
+        <Submit text="Começar" handleButton={toggle}>
+            
+      {/*!exibir?  */}     
+            
+        </Submit>
+
+        <UserAvaliacao />
         </>
     )
 }
