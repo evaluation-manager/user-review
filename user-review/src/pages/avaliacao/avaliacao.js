@@ -1,8 +1,9 @@
 import React from 'react';
-import {UserAvaliacao} from './userAvaliacao'
+import {UserAvaliacao} from './emogiAvaliacao'
 import { useState } from 'react';
 import Select from '../../components/select/Select';
 import Submit from '../../components/button/Submit';
+import Card from '../../components/card/Card';
 export const Avaliacao=()=>{
 //rendeizar teste apenas se o usuairo informar a secretaria
 const [exibir, setExibir]=useState(false);
@@ -17,40 +18,28 @@ setExibir(!exibir);
         <>
         <h1>Olá por aqui me avalie</h1>
        
-
        <Select 
        text="Tipo de instituição"
         name="select"
-
-        />
-        <Select 
-       text="Tipo de Serviço"
-        name="select"
-
         />
         
-      
-       {/*  <select>
-            <option>Semec</option>
-            <option>Semed</option>
-            <option>SMTT</option>
-        </select>
+            <Submit text={!exibir ? "Começar" : <UserAvaliacao />}
+                handleButton={toggle}/>
+           {/*Só pretendo mostrar apos a escolha da instuição */}      
+            <Card
+                text="Sobre o atendimento"
+                questions="Voce considera um bom atendimento?"
+                btnletter1="Sim"
+                btnletter2="Não"
+            />
 
-        <label>Tipo de serviço</label>
-        <select>
-            <option>Marca serviço</option>
-            <option>Pagamentos</option>
-            <option>Abrir empresa</option>
-        </select>
-        */}
-
-        <Submit text="Começar" handleButton={toggle}>
-            
-      {/*!exibir?  */}     
-            
-        </Submit>
-
-        <UserAvaliacao />
+            <Card
+                text="Sobre o tempo de espera"
+                questions="Considera aceitavel?"
+                btnletter1="Sim"
+                btnletter2="Não"
+            />
         </>
+
     )
 }
