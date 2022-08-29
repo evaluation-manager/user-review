@@ -12,14 +12,18 @@ function Card({ text, questions,btnletter1,btnletter2}) {
             <div id="question">
             <p id='questions'>{questions}</p>
 
-            </div>
-
             
             <div id="anwers-box">
-            <button>
-                <span className='btn-lette'>{btnletter1}</span>
-                <span className='btn-lette'>{btnletter2}</span>
-            </button>
+            <button className='btn-lette1'>
+              
+                    {btnletter1}
+                    </button>
+                    <button className='btn-lette2'>
+      
+                    {btnletter2}
+                   
+                    </button>
+            </div>
             </div>
         </C.Container>
     )
