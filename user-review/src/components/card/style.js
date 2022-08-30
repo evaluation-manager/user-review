@@ -1,14 +1,16 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-
+/*.container-master{
+  background:white;
+}*/
 #container{
   width:500px;
-  margin:50px auto;
+  margin:20px auto;
   border:1px solid #CDD0E8;
   padding:25px;
   border-radius:20px;
-  
+
 }
 #main-title{
   padding:20px 0;

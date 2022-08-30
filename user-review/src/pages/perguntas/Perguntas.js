@@ -1,9 +1,15 @@
 import React from 'react';
+import  * as C from  './style';
+
+import Submit from '../../components/button/Submit';
 import Card from '../../components/card/Card';
 export const Pergunta = () => {
+    const handleSumit=(e)=>{
+        alert("Obrigada pelas respostas");
+     }
     return (
-        <>
-            <h2>Sua resposta vai ajudar a mehlorar nossos serviços</h2>
+        <C.Container>
+            <h2>Sua resposta vai ajudar a melhorar nossos serviços</h2>
             
             <p>Deseja colaborar com algumas mais informações?</p>
 
@@ -20,6 +26,9 @@ export const Pergunta = () => {
                 btnletter1="Sim"
                 btnletter2="Não"
             />
-        </>
+            
+            <Submit text="Finalizar" handleButton={handleSumit}/>
+               
+        </C.Container>
     )
 }

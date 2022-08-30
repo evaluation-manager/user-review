@@ -2,11 +2,19 @@ import React from 'react';
 import * as C from './style.js'
 //import {ImHappy2, ImSad2} from 'react-icons/im';
 import {BiHappyAlt,BiHappyBeaming,BiSad} from 'react-icons/bi'
-
+import { useNavigate } from 'react-router-dom';
 export const UserAvaliacao=()=>{
+    //funçaõ para levar o página de perguntas
+    const navigate=useNavigate();
+    const handleSumit=(e)=>{
+            e.preventDefault();
+            navigate('/step1');
+    }
+    //funçaõ para gerar qrecode
     //função para contar 
     return(
         <C.Container>
+            <form onSubmit={handleSumit}>
         <div className='conteudo'>
 
             <div className='satisfeito'>
@@ -47,6 +55,7 @@ export const UserAvaliacao=()=>{
             </div>
 
             </div>
+            </form>
         </C.Container>
     )
 }
