@@ -1,12 +1,32 @@
 import React from 'react';
 //import {UserAvaliacao} from '../emogiAvaliacao'
-import { useState } from 'react';
+import { useState,useEffect } from 'react';
 import Select from '../../components/select/Select';
 import Submit from '../../components/button/Submit';
 import {UserAvaliacao} from '../avaliacao/emogiAvaliacao'
 import  * as C from  './style';
-
+//import { BrowserRouter, Router, Switch } from 'react-router-dom';
+import axios from 'axios';
 export const InfoAvalicao=()=>{
+    //função para mostrar dados ao usúario
+    //axios
+    const api=axios.create({
+        baseURL:"http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/organs",
+    })
+    //console.log(api)
+        //para guardar estados
+        const [orgao, setOrgao]=useState([]);
+        //const [servico, setServico]=useState([]);
+       // const [tema, setTema]=useState([]);
+
+   useEffect(()=>{
+        api.get("/api/orgaos/")
+        .then((response)=>{
+            console.log(response);
+            setOrgao(response.data);
+        })
+    })
+
     //gerar qrcode
 //rendeizar teste apenas se o usuairo informar a secretaria
 const [exibir, setExibir]=useState(false);
@@ -23,6 +43,7 @@ setExibir(!exibir);
        <div className='container'>
         <h1>Avalie nossos serviços</h1>
        <div className='container-select'>
+        {}
        <Select 
        text="Orgão"
         name="select"
