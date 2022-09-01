@@ -9,19 +9,19 @@ import  * as C from  './style';
 import axios from 'axios';
 export const InfoAvalicao=()=>{
     //função para mostrar dados ao usúario
-    //axios
     const api=axios.create({
         baseURL:"http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/organs",
     })
     //console.log(api)
         //para guardar estados
         const [orgao, setOrgao]=useState([]);
-        //const [servico, setServico]=useState([]);
-       // const [tema, setTema]=useState([]);
+    const [servico, setServico] = useState([]);
+    const [servico_type, setServico_type]=useState([]);
+       const [tema, setTema]=useState([]);
 
    useEffect(()=>{
-        api.get("/api/orgaos/")
-        .then((response)=>{
+       api.get("/api/orgaos/")
+           .then((response) => {
             console.log(response);
             setOrgao(response.data);
         })
@@ -43,21 +43,26 @@ setExibir(!exibir);
        <div className='container'>
         <h1>Avalie nossos serviços</h1>
        <div className='container-select'>
-        {}
+        
        <Select 
        text="Orgão"
         name="select"
-        value=""
+        value={orgao.name}
         />
          <Select 
         text="Serviço"
         name="select"
-        value=""
+        value={servico.name}
+                    />
+         <Select 
+        text="Tipo de Serviço"
+        name="select"
+        value={servico_type.name}
         />
          <Select 
         text="Tema"
         name="select"
-        value=""
+        value={tema.name}
         />
             <Submit text={!exibir ? "Confirmar" : "Responder perguntas"}
                 handleButton={toggle}/>
