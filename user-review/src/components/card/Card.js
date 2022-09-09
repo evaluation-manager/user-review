@@ -1,33 +1,47 @@
 import React from 'react';
+
 import  * as C from  './style';
 
-function Card({ text, questions,btnletter1,btnletter2}) {
+function Card({ themes, questions,answers}) {
      //funçaõ para mostrar que foi registrado
     
     return (
         <C.Container>
             <div className='container-master'>
+                {
+                }
             <div id="container"> 
-     
-            <h2 id="main-title">{text}</h2>
+     {/*aqui é o titulo */}
+     {themes.map((theme)=>(
+        <h2 id="main-title" value={theme.id} key={theme.id}>
+            {theme.name}
+        </h2>
+     ))}
+            
             </div>
 
             <div id="question">
-            <p id='questions'>{questions}</p>
 
-            
+{questions.map((question)=>(
+   
+ <p id='questions' value={question.id} key={question.id}>
+    {question.name} - {question.theme_id}
+ </p>
+
+))}
+              {/*aqui são asa alternativas  */}
             <div id="anwers-box">
-            <button className='btn-lette1'>
-              
-                    {btnletter1}
-                    </button>
-                    <button className='btn-lette2'>
-      
-                    {btnletter2}
-                   
-                    </button>
+            {answers.map((answer)=>(
+            <button className='btn-lette1'>          
+                {answer.name}
+             </button>
+            ))}
+
+          
             </div>
+           
             </div>
+            {/*aqui é o fim */}
             </div>
         </C.Container>
     )
