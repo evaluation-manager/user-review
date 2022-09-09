@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState,useEffect } from 'react';
+import { useEffect,useState } from 'react';
 import Select from '../../components/select/Select';
 import Submit from '../../components/button/Submit';
 import {UserAvaliacao} from '../avaliacao/emogiAvaliacao'
