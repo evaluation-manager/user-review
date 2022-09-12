@@ -1,20 +1,58 @@
 {
     "avaliacoes":[],
-    "service":[
+    "services_type": [
         {
-        "service_id":"4"
-    }
+          "name": "Agendamento",
+          "id": 1
+        },
+        {
+            "name": "Cadastro e pegamento de tributos",
+            "id": 2
+          },
+          {
+            "name": "Licenciamento",
+            "id": 3
+          }
 ],
     
     "question":[
         {
-        "question_id":"1"
+        "name":"sua percepção sobre o atendimento",
+        "id":1
+    }, 
+    {
+        "name":"sua opnião sobre o atendimento",
+        "id":2
     }
 ],
 
-    "answer_id":[
+    "answers":[
         {
-        "answer_id":"2"
+            "name":"Bom",
+            "id":1,
+            "question_id":"2"
+    },
+    {
+        "name":"Ruim",
+        "id":1,
+        "question_id":"2"
+},
+{
+    "name":"Pessimo",
+    "id":1,
+    "question_id":"2"
+}
+
+],
+"themes":[
+    {
+        "name":"Atendimento",
+        "id":1
+    },
+    {
+        "name":"Cadastros",
+        "id":2
     }
 ]
+    
 }

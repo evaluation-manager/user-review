@@ -1,14 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import * as C from './style.js'
 //import {ImHappy2, ImSad2} from 'react-icons/im';
 import {BiHappyAlt,BiHappyBeaming,BiSad} from 'react-icons/bi'
-import { useNavigate } from 'react-router-dom';
+//import { useNavigate } from 'react-router-dom';
 export const UserAvaliacao=()=>{
     //funçaõ para levar o página de perguntas
-    const navigate=useNavigate();
+    const [satisfeito, setSatisfeito]=useState(0);
+    const [legal, setLegal]=useState(0);
+    const [ruim, setRuim]=useState(0);
+  //  const navigate=useNavigate();
+
     const handleSumit=(e)=>{
             e.preventDefault();
-            navigate('/step1');
+            //navigate('/step1');
     }
     //funçaõ para gerar qrecode
     //função para contar 
@@ -18,7 +22,7 @@ export const UserAvaliacao=()=>{
         <div className='conteudo'>
 
             <div className='satisfeito'>
-          <button>
+          <button onClick={()=>setSatisfeito(satisfeito+1)}>
            <BiHappyBeaming  size={100} style={{
            
               color:  "#ffffff",
@@ -27,23 +31,23 @@ export const UserAvaliacao=()=>{
               }}/>        
           </button>
            <p>Muito satisfeito</p>
-           {0}
+           {satisfeito}
            </div>
 
            <div className='legal'> 
-           <button>
+           <button onClick={()=>setLegal(legal+1)}>
             <BiHappyAlt size={100} style={{
                 color:"#ffffff",
                 background: '#00FF7F',
                 padding:'10px'
             }}/>
             </button>
-            <p>Satisfeito</p>
-            {0}
+            <p>Legal</p>
+            {legal}
             </div>
 
             <div className='ruim'>
-                <button>
+                <button onClick={()=>setRuim(ruim+1)}>
             <BiSad size={100} style={{
                 color:"#ffffff",
                 background: '#FF0000',
@@ -51,7 +55,7 @@ export const UserAvaliacao=()=>{
             }}/>
             </button>
             <p>Ruim</p>
-            {0}
+            {ruim}
             </div>
 
             </div>
