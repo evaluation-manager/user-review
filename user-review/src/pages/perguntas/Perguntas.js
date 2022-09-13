@@ -52,13 +52,7 @@ export const Pergunta = () => {
      for(let i=0; i<temas.length; i++){
         //console.log("testanod",temas[i])
      }
-    //)
-    //testes de juntas objetos
-    //const merge=
-   // console.log(answers)
-
-  //  console.log(questions)
-
+   
     return (
         <C.Container>
             <h2>Sua resposta vai ajudar a melhorar nossos serviços</h2>
@@ -69,6 +63,8 @@ export const Pergunta = () => {
         
             <Card 
                 themes={testes}
+              questions="pergunta"
+              answers="respostas"
               
              />
         
