@@ -36,19 +36,8 @@
         {
           "name": "sua opnião sobre o atendimento",
           "id": 2
-        },
-        {
-          "answers": [
-            {
-              "name": "Positivo",
-              "id": 1
-            },
-            {
-              "name": "Negativo",
-              "id": 2
-            }
-          ]
         }
+       
       ]
     }
   ]

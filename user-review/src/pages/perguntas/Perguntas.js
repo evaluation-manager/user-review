@@ -12,13 +12,9 @@ export const Pergunta = ({ BtnText,handleSubmit }) => {
   //const [answers, setAnswers]=useState([]);
 
   useEffect(() => {
-    //fetch("http://localhost:5000/themes",{
-    fetch(
-      "http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/themes/questions",
-      {
-        //method:"GET"
-      }
-    )
+    fetch("http://localhost:5000/themes",{
+   // fetch("http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/themes/questions",{
+      })
       .then((resp) => resp.json())
       .then((data) => {
         setTheme(data);
@@ -39,7 +35,10 @@ export const Pergunta = ({ BtnText,handleSubmit }) => {
     setQuestions({ ...questions, [e.target.name]: e.target.value})
        
         }
-       
+       console.log(theme)
+      /* for(let i =0; i<theme.length; i++){
+
+       }*/
   return (
     <C.Container>
       <h2>Sua resposta vai ajudar a melhorar nossos serviços</h2>
