@@ -32,7 +32,9 @@ function Card({ themes, questions,answers}) {
 
               {/*aqui são asa alternativas  */}
             <div id="anwers-box">
-                <button className='btn-lette1' >{answers}</button>
+                            <button className='btn-lette1' >{answers}</button>
+                            <button className='btn-lette1' >{answers}</button>
+
             {/*answers.map((answer)=>(
             <button className='btn-lette1'>          
                 {answer.name}

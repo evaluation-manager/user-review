@@ -1,4 +1,6 @@
-import { useEffect,useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import Select from '../../components/select/Select';
 import Submit from '../../components/button/Submit';
 import {UserAvaliacao} from '../avaliacao/emogiAvaliacao'
@@ -7,7 +9,7 @@ import  * as C from  './style';
 
 export const InfoAvalicao=()=>{
         //para guardar estados
-        const [exibir, setExibir]=useState(false);
+        //const [exibir, setExibir]=useState(false);
        const [servico, setServico]=useState([]);
        // const [tema, setTema]=useState([]);
 
@@ -26,12 +28,17 @@ export const InfoAvalicao=()=>{
     //gerar qrcode
 //rendeizar teste apenas se o usuairo informar a secretaria
 
+const navigate=useNavigate();
 
-function toggle(){
+    const handleSumit=(e)=>{
+            e.preventDefault();
+            navigate('/step1');
+    }
+/*function toggle(){
 //console.log("oi");
 setExibir(!exibir);
 
-}
+}*/
 
     return (
         <C.Container>
@@ -48,8 +55,7 @@ setExibir(!exibir);
         value={servico.servico_id ? servico.organs_id.id: ''}
         />
         
-            <Submit text={!exibir ? "Confirmar" : "Responder perguntas"}
-                handleButton={toggle}/>
+            <Submit text="Confirmar" />
            {/*Só pretendo mostrar apos a escolha da instuição <UserAvaliacao  */}      
        </div>
        </div>
@@ -60,10 +66,13 @@ setExibir(!exibir);
 
         <div className='qrcode'>
             <div className='qrcode-msg'>
-            <span>Para acessar do celular</span>
+            <span>Para responder do celular acesse o qrcode ou clique em responder </span>
             </div>
-          <Submit text="Acessar qrcode"/>
-          </div>
+          <Submit text="Acessar qrcode" />
+
+          <Submit text="Responder" handleButton={handleSumit} />
+        </div>
+      
         </C.Container>
 
     )

@@ -1,5 +1,10 @@
 {
-    "avaliacoes":[],
+    "avaliacoes":[
+        {
+        "id":1,
+        "name":"Legal"
+    }
+    ],
     "services_type": [
         {
           "name": "Agendamento",
@@ -15,35 +20,9 @@
           }
 ],
     
-    "question":[
-        {
-        "name":"sua percepção sobre o atendimento",
-        "id":1
-    }, 
-    {
-        "name":"sua opnião sobre o atendimento",
-        "id":2
-    }
-],
+   
 
-    "answers":[
-        {
-            "name":"Bom",
-            "id":1,
-            "question_id":"2"
-    },
-    {
-        "name":"Ruim",
-        "id":1,
-        "question_id":"2"
-},
-{
-    "name":"Pessimo",
-    "id":1,
-    "question_id":"2"
-}
 
-],
 "themes":[
     {
         "name":"Atendimento",
@@ -52,7 +31,33 @@
     {
         "name":"Cadastros",
         "id":2
+    },
+{
+    "question":[
+        {
+        "name":"sua percepção sobre o atendimento",
+        "id":1
+    }, 
+    {
+        "name":"sua opnião sobre o atendimento",
+        "id":2
+    },
+    {
+        "answers":[
+            {
+                "name":"Positivo",
+                "id":1
+            },
+            {
+                "name":"Negativo",
+                "id":2
+            }
+        ]  
     }
+    
+]
+
+}
 ]
     
 }

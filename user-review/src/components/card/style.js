@@ -10,21 +10,22 @@ export const Container = styled.div`
   border:1px solid #CDD0E8;
   padding:25px;
   border-radius:20px;
-
+background-color:#55A4F3;
 }
 #main-title{
-  padding:20px 0;
+  padding:10px 0;
   text-align:center;
-  background: #2d425a;
+  background: #fff;
   /*border-bottom-left-radius: 50px;
   border-bottom-right-radius: 50px;*/
-  color:#fff;
+  color:#55A4F3;
 }
 
 #question{
     text-align:center;
   margin-bottom:25px;
   font-size:20px;
+  background:#55A4F3;
 }
 
 #anwers-box button:hover{
@@ -37,7 +38,7 @@ export const Container = styled.div`
 #anwers-box .btn-lette1, .btn-lette2{
  font-size:30px;
   font-weight:bold;
-  background: #e78230;
+  background: #55A4F3;
   color:#fff; 
   
   line-height:40px;
