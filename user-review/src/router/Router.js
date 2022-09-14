@@ -2,8 +2,8 @@ import React from 'react';
 
 import {BrowserRouter,Routes, Route} from 'react-router-dom';
 import {InfoAvalicao} from '../pages/Info/Info';
-import { Pergunta } from '../pages/perguntas/Perguntas';
-//import {NotFound} from '../pages/NotFound/NotFound';
+import { Cadastrar } from '../pages/perguntas/Cadastrar';
+
 export const Router =()=>{
     return (
         <BrowserRouter>
@@ -12,7 +12,7 @@ export const Router =()=>{
         <Routes>
             
              <Route path='' element={<InfoAvalicao/>}/>
-              <Route path='/step1' element={<Pergunta/>}/>
+              <Route path='/step1' element={<Cadastrar/>}/>
             {/*<Route element={<NotFound/>}/>*/}
         </Routes>
         </BrowserRouter>

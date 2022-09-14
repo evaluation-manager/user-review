@@ -1,63 +1,55 @@
 {
-    "avaliacoes":[
-        {
-        "id":1,
-        "name":"Legal"
+  "avaliacoes": [
+    {
+      "id": 1
     }
-    ],
-    "services_type": [
+  ],
+  "services_type": [
+    {
+      "name": "Agendamento",
+      "id": 1
+    },
+    {
+      "name": "Cadastro e pegamento de tributos",
+      "id": 2
+    },
+    {
+      "name": "Licenciamento",
+      "id": 3
+    }
+  ],
+  "themes": [
+    {
+      "name": "Atendimento",
+      "id": 1
+    },
+    {
+      "name": "Cadastros",
+      "id": 2
+    },
+    {
+      "question": [
         {
-          "name": "Agendamento",
+          "name": "sua percepção sobre o atendimento",
           "id": 1
         },
         {
-            "name": "Cadastro e pegamento de tributos",
-            "id": 2
-          },
-          {
-            "name": "Licenciamento",
-            "id": 3
-          }
-],
-    
-   
-
-
-"themes":[
-    {
-        "name":"Atendimento",
-        "id":1
-    },
-    {
-        "name":"Cadastros",
-        "id":2
-    },
-{
-    "question":[
+          "name": "sua opnião sobre o atendimento",
+          "id": 2
+        },
         {
-        "name":"sua percepção sobre o atendimento",
-        "id":1
-    }, 
-    {
-        "name":"sua opnião sobre o atendimento",
-        "id":2
-    },
-    {
-        "answers":[
+          "answers": [
             {
-                "name":"Positivo",
-                "id":1
+              "name": "Positivo",
+              "id": 1
             },
             {
-                "name":"Negativo",
-                "id":2
+              "name": "Negativo",
+              "id": 2
             }
-        ]  
+          ]
+        }
+      ]
     }
-    
-]
-
-}
-]
-    
+  ]
 }

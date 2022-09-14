@@ -1,57 +1,78 @@
-import React, { useEffect, useState } from 'react';
-import  * as C from  './style';
+/** @format */
 
-import Submit from '../../components/button/Submit';
-import Card from '../../components/card/Card';
+import React, { useEffect, useState } from "react";
+import * as C from "./style";
 
-export const Pergunta = () => {
-   // const [questions, setQuestions]=useState([]);
-    const [theme, setTheme]=useState([]);
-    //const [answers, setAnswers]=useState([]);
+import Submit from "../../components/button/Submit";
+import Card from "../../components/card/Card";
 
-    useEffect(()=>{
-        fetch("http://localhost:5000/themes",{
-        //fetch('http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/themes',{
-            //method:"GET"
-        }).then((resp)=>resp.json())
-        .then((data)=>{
-            setTheme(data);
-        }).catch((err)=>console.log(err))
+export const Pergunta = ({ BtnText,handleSubmit }) => {
+  const [questions, setQuestions]=useState([]);
+  const [theme, setTheme] = useState([]);
+  //const [answers, setAnswers]=useState([]);
 
+  useEffect(() => {
+    //fetch("http://localhost:5000/themes",{
+    fetch(
+      "http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/themes/questions",
+      {
+        //method:"GET"
+      }
+    )
+      .then((resp) => resp.json())
+      .then((data) => {
+        setTheme(data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  function respsotasSvale(e) {
+    e.preventDefault();
+    
+   //console.log("Respostas preenchidas");
+    // console.log()
+    handleSubmit(questions)
+    
+  }
+
+  function handleChange(e) {
+    setQuestions({ ...questions, [e.target.name]: e.target.value})
        
-    }, [])  
-
-    const handleSumit=(e)=>{
-        alert("Obrigada pelas respostas");
-     }
-    // console.log(theme)
-    
-    
-console.log(theme)
-    
-    
-
-    
-   
-    return (
-        <C.Container>
-            <h2>Sua resposta vai ajudar a melhorar nossos serviços</h2>
-            
-            <p>Deseja colaborar com algumas mais informações?</p>
+        }
        
-       {theme.map((testes)=>(
+  return (
+    <C.Container>
+      <h2>Sua resposta vai ajudar a melhorar nossos serviços</h2>
+
+      <p>Deseja colaborar com algumas mais informações?</p>
+      <form onSubmit={respsotasSvale}>
+        {/* {temas.map((testes)=>(
         
             <Card 
-                themes={testes.name}
-              questions="teste"
-              answers="respostas"
-              
+            name={Card}
+              themes={testes.name}
+              questions={testes.name}
+             answers={testes.id}
+            //value={}
+           // handleChange={create}
              />
         
         )) }
-             
-            <Submit text="Finalizar" handleButton={handleSumit}/>
-               
-        </C.Container>
-    )
-}
+      
+             */}
+        <Card 
+        type="text"
+        themes="testes"
+         questions="perguntas"
+          answers="opções"
+          name="questions"
+          handleChange={handleChange}
+         value={questions.name ? questions.id:''}
+          />
+          
+        <Submit text={BtnText} />
+      </form>
+
+    </C.Container>
+  );
+};
