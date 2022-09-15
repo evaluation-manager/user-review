@@ -4,15 +4,15 @@ export const Container = styled.div`
 /*.container-master{
   background:white;
 }*/
-#container{
+.container{
   width:500px;
   margin:20px auto;
   border:1px solid #CDD0E8;
   padding:25px;
   border-radius:20px;
-background-color:#55A4F3;
+//background-color:#55A4F3;
 }
-#main-title{
+.main-title{
   padding:10px 0;
   text-align:center;
   background: #fff;
@@ -21,25 +21,25 @@ background-color:#55A4F3;
   color:#55A4F3;
 }
 
-#question{
+.question{
     text-align:center;
   margin-bottom:25px;
   font-size:20px;
   background:#55A4F3;
 }
 
-#anwers-box button:hover{
+/*#anwers-box button:hover{
   background:#2d425a;
   color:#fff; 
-}
-#anwers-box {
+}*/
+.anwers-box {
   
 }
-#anwers-box .btn-lette1, .btn-lette2{
+.anwers-box .btn-lette1, .btn-lette2{
  font-size:30px;
   font-weight:bold;
   background: #55A4F3;
-  color:#fff; 
+  color:#55A4F3; 
   
   line-height:40px;
   text-align:center;
