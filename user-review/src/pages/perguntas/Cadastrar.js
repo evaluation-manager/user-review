@@ -15,8 +15,7 @@ export const Cadastrar=()=>{
     return(
         <>
 <Pergunta
-handleSubmit={create}
- BtnText="Confirmar"/>
+/>
         </>
 
     )
