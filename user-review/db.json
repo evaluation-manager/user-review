@@ -1,21 +1,44 @@
 {
   "avaliacoes": [
     {
+      "service_id": "1",
+      "question_id": "1",
+      "answer_id": "2",
       "id": 1
     }
   ],
-  "services_type": [
+  "grade":[
+    
+  ],
+  "services": [
     {
-      "name": "Agendamento",
+      "name": "Atendimento",
+      "sector_id": "3",
+      "id": 1
+    }
+  ],
+  "questions": [
+    {
+      "id": 1,
+      "theme_id": "1",
+      "name": "Qual é sua opinião sobre a clareza das informações?"
+    },
+    {
+      "id": 3,
+      "theme_id": "2",
+      "name": "A informação estava boa?"
+    }
+  ],
+  "answers": [
+    {
+      "name": "teste",
+      "question_id": "3",
       "id": 1
     },
     {
-      "name": "Cadastro e pegamento de tributos",
+      "name": "teste t",
+      "question_id": "1",
       "id": 2
-    },
-    {
-      "name": "Licenciamento",
-      "id": 3
     }
   ],
   "themes": [
@@ -24,7 +47,7 @@
       "id": 1,
       "question": [
         {
-          "theme_id":"1",
+          "theme_id": "1",
           "name": "sua percepção sobre o atendimento",
           "id": 1,
           "anwers": [
@@ -35,8 +58,9 @@
             {
               "name": "Ruim",
               "id": 2
-            }]
-        }      
+            }
+          ]
+        }
       ]
     },
     {
@@ -44,9 +68,9 @@
       "id": 2,
       "question": [
         {
-          "theme_id":"1",
+          "theme_id": "1",
           "name": "sua percepção sobre o espaço",
-          "id": 1,
+          "id": 2,
           "anwers": [
             {
               "name": "Muito bom",
@@ -55,11 +79,10 @@
             {
               "name": "Legal",
               "id": 4
-            }]
-        }      
+            }
+          ]
+        }
       ]
     }
-
-   
   ]
 }

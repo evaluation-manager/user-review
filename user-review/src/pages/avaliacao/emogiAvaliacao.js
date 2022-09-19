@@ -8,17 +8,17 @@ export const UserAvaliacao=()=>{
     const [satisfeito, setSatisfeito]=useState(0);
     const [legal, setLegal]=useState(0);
     const [ruim, setRuim]=useState(0);
-  //  const navigate=useNavigate();
+   //const navigate=useNavigate();
 
     const handleSumit=(e)=>{
             e.preventDefault();
-            //navigate('/step1');
+           // navigate('/step1');
     }
     //funçaõ para gerar qrecode
     //função para contar 
     return(
         <C.Container>
-            <form onSubmit={handleSumit}>
+          
         <div className='conteudo'>
 
             <div className='satisfeito'>
@@ -59,7 +59,8 @@ export const UserAvaliacao=()=>{
             </div>
 
             </div>
-            </form>
+
+            
         </C.Container>
     )
 }

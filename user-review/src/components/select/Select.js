@@ -2,19 +2,20 @@ import React from  'react';
 
 import * as C from './styles';
 
-function Select({options, text, name, handleOnChange,value}){
-    return (
-        <C.Container>
+function Select({options, text, name, onChange,value}){ 
   
-  <label htmlFor={name}>
+return (
+        <C.Container>
+    <label htmlFor={name}>
       {text}:
     </label>
     <br/>
     <select name={name}
       id={name}
-      onChange={handleOnChange}
+      onChange={onChange}
         value={value || ''}>
-    <option>Escolha uma opção</option>
+      <option>Escolha uma opção</option>
+      
       {
       options.map((option) => (
     <option value={option.id} key={option.id}>
