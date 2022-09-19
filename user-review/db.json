@@ -21,12 +21,34 @@
     {
       "id": 1,
       "theme_id": "1",
-      "name": "Qual é sua opinião sobre a clareza das informações?"
+      "name": "Qual é sua opinião sobre a clareza das informações?",
+      "answers":[
+        {
+          "name": "Muito bom",
+          "id": 3
+        },
+        {
+          "name": "Legal",
+          "id": 4
+        }
+      ]
+      
     },
     {
       "id": 3,
       "theme_id": "2",
-      "name": "A informação estava boa?"
+      "name": "A informação estava boa?",
+       "answers":[
+        {
+          "name": "Muito bom",
+          "id": 3
+        },
+        {
+          "name": "Legal",
+          "id": 4
+        }
+      ]
+      
     }
   ],
   "answers": [
@@ -53,11 +75,11 @@
           "anwers": [
             {
               "name": "Bom",
-              "id": 1
+              "id": 3
             },
             {
               "name": "Ruim",
-              "id": 2
+              "id": 4
             }
           ]
         }

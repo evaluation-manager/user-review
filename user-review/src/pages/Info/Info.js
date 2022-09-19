@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 
 import Select from '../../components/select/Select';
@@ -9,15 +9,15 @@ import  * as C from  './style';
 
 
 export const InfoAvalicao=()=>{
-      const url= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/services' 
-        const urlQ= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/questions'
-      const urlR= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/answers'
+     // const url= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/services' 
+      //  const urlQ= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/questions'
+      //const urlR= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/answers'
 
-      //const url="http://localhost:5000/services";
-      //const urlQ="http://localhost:5000/questions";
-      //const urlR="http://localhost:5000/answers";
-//const urlA="http://localhost:5000/avaliacoes";
-const urlA="http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes"
+      const url="http://localhost:5000/services";
+      const urlQ="http://localhost:5000/questions";
+      const urlR="http://localhost:5000/answers";
+const urlA="http://localhost:5000/avaliacoes";
+//const urlA="http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes"
       //o que vai receber
 const [avaliacoes,setAvaliacoes]=useState([]);
 
@@ -25,7 +25,8 @@ const [avaliacoes,setAvaliacoes]=useState([]);
        const [servico, setServico]=useState([]);
        const [question, setQuestion]=useState([]);
        const [answers, setAnswers]=useState([]);
-
+const [currenteQuestion,seTcurrenteQuestion]=useState(0)
+  
 //enviando para o post
 const [service_id,setService_id]=useState("");
 const [question_id, setQuestion_id]=useState("");
@@ -76,13 +77,13 @@ useEffect(()=>{
     setAvaliacoes((prevAvaliacoes) => [...prevAvaliacoes, addAvaliacoes])
     }
 
+
     return (
         <C.Container>
                <h1>Avalie nossos serviços</h1>     
      
        <form onSubmit={handleSumit}>
        
-
          <Select 
         text="Serviço"
         name="servico_id"
@@ -90,7 +91,13 @@ useEffect(()=>{
         options={servico}      
         value={service_id}
         />
-           <Select 
+          <div> 
+          
+          </div>
+           
+   <UserAvaliacao/>  
+           
+   <Select 
         text="Pergunta"
         name="question_id"
         onChange={(e) => setQuestion_id(e.target.value)}
@@ -103,12 +110,8 @@ useEffect(()=>{
         onChange={(e) => setAnswers_id(e.target.value)}
         options={answers}      
         value={answer_id}
-        />
-            <Submit text="Confirmar"/>
-           
-    <UserAvaliacao/> 
-           
-     
+          />
+                      <Submit text="Confirmar"/>
         </form>
        
 
@@ -126,3 +129,4 @@ useEffect(()=>{
 
     )
 }
+{/*     */} 
