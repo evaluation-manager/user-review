@@ -5,6 +5,7 @@ import Select from '../../components/select/Select';
 import Submit from '../../components/button/Submit';
 import {UserAvaliacao} from '../avaliacao/emogiAvaliacao'
 import  * as C from  './style';
+import Res from '../../components/card/Res';
 //import { Pergunta } from './Perguntas';
 
 
@@ -25,7 +26,7 @@ const [avaliacoes,setAvaliacoes]=useState([]);
        const [servico, setServico]=useState([]);
        const [question, setQuestion]=useState([]);
        const [answers, setAnswers]=useState([]);
-const [currenteQuestion,seTcurrenteQuestion]=useState(0)
+//const [currenteQuestion,seTcurrenteQuestion]=useState(0)
   
 //enviando para o post
 const [service_id,setService_id]=useState("");
@@ -68,7 +69,7 @@ useEffect(()=>{
 
       const res = await fetch(urlA, {
         method: "POST",
-        //headers: { "Content-Type": "application/json" },
+        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(avaliacao)
       });
 
@@ -80,7 +81,6 @@ useEffect(()=>{
 
     return (
         <C.Container>
-               <h1>Avalie nossos serviços</h1>     
      
        <form onSubmit={handleSumit}>
        
@@ -95,25 +95,26 @@ useEffect(()=>{
           
           </div>
            
-   <UserAvaliacao/>  
-           
+    
    <Select 
         text="Pergunta"
         name="question_id"
         onChange={(e) => setQuestion_id(e.target.value)}
         options={question}      
         value={question_id}
-        />
-           <Select 
-        text="Resposta"
+          />
+      
+           <Res
         name="answer_id"
         onChange={(e) => setAnswers_id(e.target.value)}
-        options={answers}      
-        value={answer_id}
-          />
-                      <Submit text="Confirmar"/>
+        opcoes={answers} 
+          value={answer_id}
+             />
+             <Submit text="Confirmar"/>
         </form>
-       
+        
+         <UserAvaliacao/>  
+
 
        {/* <div className='qrcode'>
             <div className='qrcode-msg'>

@@ -1,5 +1,4 @@
 
-import { type } from "@testing-library/user-event/dist/type";
 import React from "react";
 
 
@@ -12,16 +11,27 @@ function Res({name,value, text,onChange, opcoes }) {
       <label htmlFor={name}>
       {text}:
     </label>
+        <div  name={name}
+          id={name}
+          onChange={onChange}
+          value={value}>
 
+          <input  type={"radio"}  checked/>
+        <label className="options">Escola a opção</label>
     {opcoes.map((opcao)=>(   
-
-        <label key={opcao.id} value={opcao.id}>
+      <div className="options">  
+        
+        <input key={opcao.id}
+          value={opcao.id}
+          type={"radio"}  
+        />
+        
+        <label >
             {opcao.name}
             </label>
-
-      )) }
-          
-
+            </div>
+    ))}
+          </div>
      </div>
     </C.Container>
   );

@@ -3,9 +3,10 @@ import styled from 'styled-components';
 export const Container = styled.div`
 label{
     color:#000;
-    padding:20px;
+    
     font-weight: bold;
 font-size:20px;
+
 }
 select{
     padding:15px;
@@ -13,5 +14,6 @@ select{
     margin:5px;
 border-radius:10px;
 font-size:12px;
+width: 500px;
 }
 `;

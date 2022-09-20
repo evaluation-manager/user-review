@@ -7,9 +7,10 @@ align-items:center;
 text-align: center;
 justify-content: center;
 background: #fff;
-height:100%;
+
 
 }
+
 h1{
     color:#4D4D4D; 
 }

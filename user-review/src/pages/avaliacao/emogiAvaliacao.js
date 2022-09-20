@@ -5,9 +5,10 @@ import {BiHappyAlt,BiHappyBeaming,BiSad} from 'react-icons/bi'
 //import { useNavigate } from 'react-router-dom';
 export const UserAvaliacao=()=>{
     //funçaõ para levar o página de perguntas
-    const [satisfeito, setSatisfeito]=useState(0);
-    const [legal, setLegal]=useState(0);
-    const [ruim, setRuim]=useState(0);
+
+    const [satisfeito, setSatisfeito]=useState([58,6,80]);
+    const [legal, setLegal]=useState([58,6,80]);
+    const [ruim, setRuim]=useState([58,6,80,9]);
    //const navigate=useNavigate();
 
     const handleSumit=(e)=>{
@@ -22,44 +23,40 @@ export const UserAvaliacao=()=>{
         <div className='conteudo'>
 
             <div className='satisfeito'>
-          <button onClick={()=>setSatisfeito(satisfeito+1)}>
+          
            <BiHappyBeaming  size={100} style={{
-           
               color:  "#ffffff",
               background : '#0000FF',
              padding:'10px'
               }}/>        
-          </button>
+
            <p>Muito satisfeito</p>
-           {satisfeito}
+           {satisfeito.length}
            </div>
 
            <div className='legal'> 
-           <button onClick={()=>setLegal(legal+1)}>
+           
             <BiHappyAlt size={100} style={{
                 color:"#ffffff",
                 background: '#00FF7F',
                 padding:'10px'
             }}/>
-            </button>
+        
             <p>Legal</p>
-            {legal}
+            {legal.length}
             </div>
 
             <div className='ruim'>
-                <button onClick={()=>setRuim(ruim+1)}>
+            <input type={"submit"} value="ruim"/>
             <BiSad size={100} style={{
                 color:"#ffffff",
                 background: '#FF0000',
                 padding:'10px'
-            }}/>
-            </button>
-            <p>Ruim</p>
-            {ruim}
-            </div>
+            }}/>      
 
+            {ruim.length}
             </div>
-
+            </div>
             
         </C.Container>
     )

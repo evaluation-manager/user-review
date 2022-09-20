@@ -3,9 +3,7 @@ import styled from 'styled-components';
 export const Container = styled.div`
 
 .conteudo{
-  
     display:inline-flex;
-   
     border-radius:5px;
    
 }
@@ -30,26 +28,36 @@ animation-delay:.2s;
 }
 
 /*conteudo dos botões*/
-.ruim button{
+.ruim {
     background: #FF0000;
     margin:20px;
-
-}
-
-.satisfeito button{
-    background: #0000FF;
-    margin:20px;
-}
-
-.legal button{
-    background: #00FF7F;
-    margin:20px;
-}
-
-button{
     cursor: pointer;
-    border-radius:20px;
-    
+}
+
+.satisfeito {
+    background: #0000FF;
+    margin:20px;  
+    cursor: pointer;
+}
+
+.legal{
+    background: #00FF7F;
+    margin:20px;    
+    cursor: pointer;
+}
+.legal:hover{
+width:200px;
+}   
+.satisfeito:hover{
+width:200px;
+
+}
+.ruim:hover{
+    width:200px;
+
+}
+input{
+    cursor:pointer;
 }
 /*celular*/
 @media (max-width: 600px){
