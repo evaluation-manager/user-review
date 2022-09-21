@@ -7,7 +7,7 @@ import * as C from "./style";
 function Res({name,value, text,onChange, opcoes }) {
   return (
     <C.Container>
-      <div className="container">
+      <div className="container" >
       <label htmlFor={name}>
       {text}:
     </label>
@@ -17,7 +17,7 @@ function Res({name,value, text,onChange, opcoes }) {
           value={value}>
 
           <input  type={"radio"}  checked/>
-        <label className="options">Escola a opção</label>
+        <label className="options">Escolha a opção</label>
     {opcoes.map((opcao)=>(   
       <div className="options">  
         

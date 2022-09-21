@@ -45,8 +45,8 @@ animation-delay:.2s;
     margin:20px;    
     cursor: pointer;
 }
-.legal:hover{
-width:200px;
+/*.legal:hover{
+//width:200px;
 }   
 .satisfeito:hover{
 width:200px;
@@ -55,7 +55,7 @@ width:200px;
 .ruim:hover{
     width:200px;
 
-}
+}*/
 input{
     cursor:pointer;
 }

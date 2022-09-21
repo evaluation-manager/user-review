@@ -1,32 +1,23 @@
 {
-  "notas":[],
+  "notas": [],
+  "organs": [
+    {
+      "name": "Semec",
+      "id": 1
+    },
+    {
+      "name": "Esporte",
+      "id": 2
+    }
+  ],
   "avaliacoes": [
     {
       "service_id": "1",
       "question_id": "1",
-      "answer_id": "2",
+      "answer_id": "4",
       "id": 1
-    },
-    {
-      "service_id": "1",
-      "question_id": "3",
-      "answer_id": "1",
-      "id": 2
-    },
-    {
-      "service_id": "1",
-      "question_id": "1",
-      "answer_id": "2",
-      "id": 3
-    },
-    {
-      "service_id": "1",
-      "question_id": "1",
-      "answer_id": "1",
-      "id": 4
     }
   ],
-  "grade": [],
   "services": [
     {
       "name": "Atendimento",
@@ -49,33 +40,6 @@
           "id": 4
         }
       ]
-    },
-    {
-      "id": 3,
-      "theme_id": "2",
-      "name": "A informação estava boa?",
-      "answers": [
-        {
-          "name": "Muito bom",
-          "id": 3
-        },
-        {
-          "name": "Legal",
-          "id": 4
-        }
-      ]
-    }
-  ],
-  "answers": [
-    {
-      "name": "teste",
-      "question_id": "3",
-      "id": 1
-    },
-    {
-      "name": "teste t",
-      "question_id": "1",
-      "id": 2
     }
   ],
   "themes": [

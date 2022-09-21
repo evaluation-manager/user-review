@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react';
+import {  useEffect, useState } from 'react';
 
 
 import Select from '../../components/select/Select';
@@ -10,14 +10,14 @@ import Res from '../../components/card/Res';
 
 
 export const InfoAvalicao=()=>{
-     // const url= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/services' 
-      //  const urlQ= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/questions'
-      //const urlR= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/answers'
+      const url= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/services' 
+      const urlQ= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/questions/answers'
+      const urlA= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes'
 
-      const url="http://localhost:5000/services";
-      const urlQ="http://localhost:5000/questions";
-      const urlR="http://localhost:5000/answers";
-const urlA="http://localhost:5000/avaliacoes";
+     // const url="http://localhost:5000/services";
+     // const urlQ="http://localhost:5000/questions";
+   //const urlA="http://localhost:5000/avaliacoes";
+
 //const urlA="http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes"
       //o que vai receber
 const [avaliacoes,setAvaliacoes]=useState([]);
@@ -33,7 +33,7 @@ const [service_id,setService_id]=useState("");
 const [question_id, setQuestion_id]=useState("");
 const [answer_id, setAnswers_id]=useState("");
 
-useEffect(()=>{
+ useEffect(()=>{
    async function fetchDataSevice(){
     const res=await fetch(url);
     const data=await res.json();
@@ -49,13 +49,7 @@ useEffect(()=>{
 
    }
    fetchDataQuestion();
-   async function fetchDataAnswer(){
-    const res=await fetch(urlR);
-    const data=await res.json();
-    setAnswers(data);
 
-   }
-   fetchDataAnswer();
 },[])
 
 
@@ -69,16 +63,16 @@ useEffect(()=>{
 
       const res = await fetch(urlA, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+       // headers: { "Content-Type": "application/json" },
         body: JSON.stringify(avaliacao)
       });
-
-            const addAvaliacoes = await res.json();
-    //carregamento de forma dinamica
-    setAvaliacoes((prevAvaliacoes) => [...prevAvaliacoes, addAvaliacoes])
+      //teste()
     }
 
-
+let resposta =question.map((resposta)=>(
+  resposta.answers
+))
+console.log(resposta)
     return (
         <C.Container>
      
@@ -103,16 +97,20 @@ useEffect(()=>{
         options={question}      
         value={question_id}
           />
-      
-           <Res
-        name="answer_id"
-        onChange={(e) => setAnswers_id(e.target.value)}
-        opcoes={answers} 
-          value={answer_id}
-             />
+
+      {resposta.map((resposta)=>(
+          <Res
+          name="answer_id"
+          onChange={(e) => setAnswers_id(e.target.value)}
+          opcoes={resposta} 
+            value={answer_id}
+                />
+      ))
+          
+      }
              <Submit text="Confirmar"/>
         </form>
-        
+         
          <UserAvaliacao/>  
 
 
