@@ -1,21 +1,23 @@
 import React, { useEffect, useState } from 'react';
 import * as C from './style.js'
+import Submit from '../../components/button/Submit';
 
 import Select from '../../components/select/Select';
 import {BiHappyAlt,BiHappyBeaming,BiSad} from 'react-icons/bi'
-//import { useNavigate } from 'react-router-dom';
-export const UserAvaliacao=()=>{
-    const url="http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/grades";
-    //const urlO="http://localhost:5000/organs";
-    const urlO="http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/organs";
+import { Link } from 'react-router-dom';
+export const UserAvaliacao = () => {
+  const url="http://localhost:5000/notas"
+    //const url="http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/grades";
+    const urlO="http://localhost:5000/organs";
+    //const urlO="http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/organs";
     //funçaõ para levar o página de perguntas
-//const [notas,setNotas ]=useState([]);
+
 const [organ, setOrgan]=useState([]);
 const [organ_id,setOrgan_id]=useState("");
-//const [grades,setGrades]=useState(1);
+const [grades,setGrades]=useState();
   
 //testes
-const [teste,setTeste]=useState([1,3,5])
+const [notas,setNotas]=useState([])
 
 useEffect(()=>{
     async function fetchDataOrgans(){
@@ -25,27 +27,23 @@ useEffect(()=>{
     }
     fetchDataOrgans();
 
-  /*async function fetchDataNotas(){
+  async function fetchDataNotas(){
         const res=await fetch(url);
         const data=await res.json();
         setNotas(data);
         }
         fetchDataNotas();
-        */
+        
 }, []);
 
     const handleSumit=async(e)=>{
-            e.preventDefault();
-
-           // navigate('/step1');
+     // e.preventDefault();
             
          const notas={
             
-          grades:
+          grades,
             organ_id
            }
-            
-           // console.log(satisfeito)
             
          const res = await fetch(url, {
             method: "POST",
@@ -53,18 +51,35 @@ useEffect(()=>{
             body: JSON.stringify(notas)
           });
           //console.log(organ_id)
-    }
-    function status(){
-      //console.log(teste[0])
-    }
+  }
+  
+    const status1=()=>{
+      
+      handleSumit()
+      setGrades(1)
+  }
+  const status2=()=>{
+    
+    handleSumit()
+    setGrades(3)
+  }
+  const status3=()=>{
+   
+    handleSumit()
+    setGrades(5)
+  }
 
     //funçaõ para gerar qrecode
     //função para contar 
-   // console.log(teste[0])
+  let teste = notas.map((nota) => (
+    nota.grades
+  ))
+   console.log(teste.length)
+   // console.log(notas)
     return(
         <C.Container>
 
-          <>
+          <div>
             <Select 
             options={organ}
             text="Escolha um orgão para avaliar"
@@ -73,9 +88,11 @@ useEffect(()=>{
             onChange={(e)=>setOrgan_id(e.target.value)}
             />
          
-        <div className='conteudo'>
+          <div className='conteudo'>
+            <div className='satisfeito'>
         <button name="grades" 
-                value={teste[0]}
+                value={grades}
+                onClick={status1}
           >
 
         <BiHappyBeaming  size={100} style={{
@@ -83,47 +100,51 @@ useEffect(()=>{
               background : '#0000FF',
              padding:'10px'
               }}/>   
-                      
+                <p>Satisfeito {teste.length }</p>    
               </button>
-
+            </div>
+            
             <div className='legal'> 
            <button name="legal" 
-          value={teste[1]}
-        
-          >
+          value={grades}  onClick={status2}>
+                  
             <BiHappyAlt size={100} style={{
                 color:"#ffffff",
                 background: '#00FF7F',
                 padding:'10px'
-            }}/>
+                }} />
+                 <p>Legal  {teste.length } </p> 
             </button>      
-        
+           
           </div>
 
           <div className='ruim'>
           <button name="ruim" 
-          value={teste[2]}
-          >      
+                value={grades}
+                onClick={status3}>      
           
           <BiSad size={100} style={{
               color:"#ffffff",
               background: '#FF0000',
               padding:'10px'
-          }}/>      
-</button>
-</div>
+                }} />  
+                <p>Ruim { teste.length}</p>      
+              </button>
+              
+        </div>
         </div>
       
-
-</>
-          
+        </div>
+         <div className='qrcode'>
+            <div className='qrcode-msg'>
+            <span>Para responder do celular acesse o qrcode ou clique em responder </span>
+            </div>
+        
+            <Submit text="Acessar qrcode" />
+   
+    
+            </div>
+         <Link to="/survey">Responder</Link>
         </C.Container>
     )
 }
-
-{/*
- 
-          </div>
-      
-
-*/}

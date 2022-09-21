@@ -3,11 +3,8 @@ import {  useEffect, useState } from 'react';
 
 import Select from '../../components/select/Select';
 import Submit from '../../components/button/Submit';
-import {UserAvaliacao} from '../avaliacao/emogiAvaliacao'
 import  * as C from  './style';
 import Res from '../../components/card/Res';
-//import { Pergunta } from './Perguntas';
-
 
 export const InfoAvalicao=()=>{
       const url= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/services' 
@@ -16,7 +13,7 @@ export const InfoAvalicao=()=>{
 
      // const url="http://localhost:5000/services";
      // const urlQ="http://localhost:5000/questions";
-   //const urlA="http://localhost:5000/avaliacoes";
+   //const urlA="http://slocalhost:5000/avaliacoes";
 
 //const urlA="http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes"
       //o que vai receber
@@ -72,11 +69,11 @@ const [answer_id, setAnswers_id]=useState("");
 let resposta =question.map((resposta)=>(
   resposta.answers
 ))
-console.log(resposta)
+//console.log(resposta.length)
     return (
         <C.Container>
      
-       <form onSubmit={handleSumit}>
+        <form onSubmit={handleSumit}>
        
          <Select 
         text="Serviço"
@@ -85,11 +82,7 @@ console.log(resposta)
         options={servico}      
         value={service_id}
         />
-          <div> 
-          
-          </div>
-           
-    
+        
    <Select 
         text="Pergunta"
         name="question_id"
@@ -110,22 +103,10 @@ console.log(resposta)
       }
              <Submit text="Confirmar"/>
         </form>
-         
-         <UserAvaliacao/>  
-
-
-       {/* <div className='qrcode'>
-            <div className='qrcode-msg'>
-            <span>Para responder do celular acesse o qrcode ou clique em responder </span>
-            </div>
-        
-            <Submit text="Acessar qrcode" />
-   
     
-            */}
              
         </C.Container>
 
     )
 }
-{/*     */} 
+ 

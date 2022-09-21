@@ -1,5 +1,21 @@
 {
-  "notas": [],
+  "notas": [
+    {
+      "grades": 1,
+      "organ_id": "1",
+      "id": 1
+    },
+    {
+      "grades": 1,
+      "organ_id": "1",
+      "id": 2
+    },
+    {
+      "grades": 5,
+      "organ_id": "1",
+      "id": 3
+    }
+  ],
   "organs": [
     {
       "name": "Semec",
