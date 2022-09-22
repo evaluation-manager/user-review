@@ -26,7 +26,7 @@ margin-bottom:0px;
   font-size:30px;
 }*/
 
-  .options {
+  button {
   background: #000;
   border-radius: 0.5rem;
   padding: 1rem;
@@ -36,12 +36,11 @@ margin-bottom:0px;
   transition: 0.4s;
   color:#fff;
   display: flex;
+  padding:15px;
+  width:100%;
   }
-label{
-  background: #000;
-  margin:5px;
-}
-  .options:hover {
+
+  button:hover {
   opacity: 1;
   
 }

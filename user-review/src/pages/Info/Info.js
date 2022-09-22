@@ -7,13 +7,13 @@ import  * as C from  './style';
 import Res from '../../components/card/Res';
 
 export const InfoAvalicao=()=>{
-      const url= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/services' 
-      const urlQ= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/questions/answers'
-      const urlA= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes'
+      //const url= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/services' 
+     // const urlQ= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/questions/answers'
+     // const urlA= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes'
 
-     // const url="http://localhost:5000/services";
-     // const urlQ="http://localhost:5000/questions";
-   //const urlA="http://slocalhost:5000/avaliacoes";
+      const url="http://localhost:5000/services";
+     const urlQ="http://localhost:5000/questions";
+   const urlA="http://slocalhost:5000/avaliacoes";
 
 //const urlA="http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes"
       //o que vai receber
@@ -23,7 +23,7 @@ const [avaliacoes,setAvaliacoes]=useState([]);
        const [servico, setServico]=useState([]);
        const [question, setQuestion]=useState([]);
        const [answers, setAnswers]=useState([]);
-//const [currenteQuestion,seTcurrenteQuestion]=useState(0)
+const [currenteQuestion,seTcurrenteQuestion]=useState(0)
   
 //enviando para o post
 const [service_id,setService_id]=useState("");
@@ -60,12 +60,19 @@ const [answer_id, setAnswers_id]=useState("");
 
       const res = await fetch(urlA, {
         method: "POST",
-       // headers: { "Content-Type": "application/json" },
+       headers: { "Content-Type": "application/json" },
         body: JSON.stringify(avaliacao)
       });
       //teste()
     }
 
+  function handleValue(answer_id) {
+    console.log(answer_id)
+    const next = currenteQuestion + 1;
+    if (next < question.length) {
+      seTcurrenteQuestion(next)
+    }
+  }
 let resposta =question.map((resposta)=>(
   resposta.answers
 ))
@@ -83,24 +90,28 @@ let resposta =question.map((resposta)=>(
         value={service_id}
         />
         
-   <Select 
+  {/**  <Select 
         text="Pergunta"
         name="question_id"
         onChange={(e) => setQuestion_id(e.target.value)}
         options={question}      
         value={question_id}
           />
+*/}
+        <div>  
+   <span> {currenteQuestion +1}</span> /{question.length}      
+          </div>
 
-      {resposta.map((resposta)=>(
-          <Res
-          name="answer_id"
-          onChange={(e) => setAnswers_id(e.target.value)}
-          opcoes={resposta} 
-            value={answer_id}
-                />
-      ))
+<div>
+      {question[currenteQuestion].name}      
+</div>
+          {question[currenteQuestion].answers.map((answers) =>
+            <button onClick={()=>handleValue(answers.id)}
+              key={answers.id}>
+          {answers.name}
+          </button>
+          )}       
           
-      }
              <Submit text="Confirmar"/>
         </form>
     
@@ -109,4 +120,13 @@ let resposta =question.map((resposta)=>(
 
     )
 }
+ {/* <Res
+          name="answer_id"
+         // onChange={(e) => setAnswers_id(e.target.value)}
+          opcoes={resposta} 
+          value={answer_id}
+          onClick={handleButton=>setAnswers_id}
+                />
+      ))
+         */}  
  
