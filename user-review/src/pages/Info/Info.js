@@ -78,7 +78,7 @@ const [answer_id, setAnswers_id]=useState("");
   }
 
 //console.log(resposta)
-let arrar=[];
+/*let arrar=[];
 let arra1=[];
 let array2 =[]
 
@@ -96,9 +96,15 @@ for (let i=0; i<question.length; i++){
    arra1.push(teste)
    }
 
-}
+}*/
 
-
+var arr = question.map(function(obj) {
+  return Object.keys(obj).map(function(key) {
+      return obj[key];
+  });
+});
+console.log(arr[0]);
+//console.log("oi",question)
     return (
         <C.Container>
      
@@ -112,30 +118,44 @@ for (let i=0; i<question.length; i++){
         value={service_id}
         />
         
-    <Select 
+   {/*  <Select 
         text="Pergunta"
         name="question_id"
         onChange={(e) => setQuestion_id(e.target.value)}
         options={question}      
         value={question_id}
           />
-
-    {/*    <div>  
-  <span> {currenteQuestion +1}</span> /{arrar.length}    
+*/}
+       <div>  
+  <span> {currenteQuestion +1}</span> /{question.length}    
           </div>
 
 <div className='perguntas'>
-    {arrar[currenteQuestion]}      
+  Questão {arr.map((teste,index)=>(
+    <span key={index}>{teste[1]}</span>
+  ))}  
 </div>
+
+{/*{arr[currenteQuestion].answers.map((answer, index)=>(
+ <button 
+ onClick= {()=>handleValue(answer.id)}
+ key={index}>
+  {answer.name}
+ </button>
+))
+ 
+}
 */}
-            <Res
+
+
+        {/*    <Res
             onClick={handleValue}
            opcoes={arra1}
            name="answer_id"
            value={answer_id}
           />
             
-            
+            */} 
        
              <Submit text="Confirmar"/>
         </form>
