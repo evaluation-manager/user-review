@@ -6,10 +6,10 @@ import Select from '../../components/select/Select';
 import {BiHappyAlt,BiHappyBeaming,BiSad} from 'react-icons/bi'
 import { Link } from 'react-router-dom';
 export const UserAvaliacao = () => {
-  const url="http://localhost:5000/notas"
-    //const url="http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/grades";
-    const urlO="http://localhost:5000/organs";
-    //const urlO="http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/organs";
+//const url="http://localhost:5000/notas"
+  const url="http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/grades";
+   //const urlO="http://localhost:5000/organs";
+   const urlO="http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/organs";
     //funçaõ para levar o página de perguntas
 
 const [organ, setOrgan]=useState([]);
@@ -39,21 +39,24 @@ const [notas,setNotas]=useState([])
     const handleSumit=async(e)=>{
       e.preventDefault();
             
-         const notas={
-            
-          grades,
-            organ_id
+         const gradess={
+          organ_id,
+          grades
+           
            }
             
          const req = await fetch(url, {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify(notas)
+         // headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(gradess)
           });
       //  setGrades(res)
        // console.log(setGrades(res))
-      const res = await req.json()
-      
+      //const res = await req.json()
+      //setGrades(res)
+      const addNotas = await req.json();
+      //carregamento de forma dinamica
+      setNotas((prevOrgans) => [...prevOrgans, addNotas])
   }
   
   const status1 = () => {

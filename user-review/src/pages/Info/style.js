@@ -28,6 +28,7 @@ span{
     color:#4D4D4D;
     font-size:20px;
 }
+
 @media (max-width: 600px){
     
     .container-select{
