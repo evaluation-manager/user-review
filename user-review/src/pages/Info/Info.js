@@ -7,13 +7,13 @@ import  * as C from  './style';
 import Res from '../../components/card/Res';
 
 export const InfoAvalicao=()=>{
-      const url= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/services' 
-      const urlQ= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/questions/answers'
-      const urlA= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes'
+     // const url= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/services' 
+     // const urlQ= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/questions/answers'
+      //const urlA= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes'
 
-     // const url="http://localhost:5000/services";
-    // const urlQ="http://localhost:5000/questions";
-  // const urlA="http://localhost:5000/avaliacoes";
+      const url="http://localhost:5000/services";
+     const urlQ="http://localhost:5000/questions";
+  const urlA="http://localhost:5000/avaliacoes";
 
       //o que vai receber
 //const [avaliacoes,setAvaliacoes]=useState([]);
@@ -30,6 +30,7 @@ const [question_id, setQuestion_id]=useState("");
 const [answer_id, setAnswers_id]=useState("");
 
  useEffect(()=>{
+
    async function fetchDataSevice(){
     const res=await fetch(url);
     const data=await res.json();
@@ -39,12 +40,15 @@ const [answer_id, setAnswers_id]=useState("");
    fetchDataSevice();
    
    async function fetchDataQuestion(){
-    const res=await fetch(urlQ);
-    const data=await res.json();
-    setQuestion(data);
+     const res=await fetch(urlQ);
+     const data=await res.json();
+     setQuestion(data);
+  
+    }
+    
+    fetchDataQuestion()
 
-   }
-   fetchDataQuestion();
+  
 
 },[])
 
@@ -57,17 +61,17 @@ const [answer_id, setAnswers_id]=useState("");
         answer_id:answer_id
       }
 
-      const res = await fetch(urlA, {
+     /* const res = await fetch(urlA, {
         method: "POST",
-      // headers: { "Content-Type": "application/json" },
+       headers: { "Content-Type": "application/json" },
         body: JSON.stringify(avaliacao)
       });
       //teste()
-      
+      */
     }
 
   function handleValue(id) {
-   console.log("oi")
+   console.log("oi", id)
 
    console.log(id)
     const next = currenteQuestion + 1;
@@ -77,14 +81,13 @@ const [answer_id, setAnswers_id]=useState("");
     }
   }
 
-//console.log(resposta)
-/*let arrar=[];
+//console.log(resposta)let arrar=[];
 let arra1=[];
 let array2 =[]
 
 for (let i=0; i<question.length; i++){
   let questoes=question[i].name
-  arrar.push(questoes)
+  arra1.push(questoes)
 
   //pegando as respostas
    let respostas=question[i].answers;
@@ -93,17 +96,17 @@ for (let i=0; i<question.length; i++){
    // console.log(respostas)
    let teste=respostas[j]
    // arra1.push(resposta)
-   arra1.push(teste)
+   array2.push(teste)
    }
 
-}*/
+}
 
 var arr = question.map(function(obj) {
   return Object.keys(obj).map(function(key) {
       return obj[key];
   });
 });
-console.log(arr[0]);
+//console.log(arr[0]);
 //console.log("oi",question)
     return (
         <C.Container>
@@ -117,55 +120,27 @@ console.log(arr[0]);
         options={servico}      
         value={service_id}
         />
-        
-   {/*  <Select 
-        text="Pergunta"
-        name="question_id"
-        onChange={(e) => setQuestion_id(e.target.value)}
-        options={question}      
-        value={question_id}
-          />
-*/}
-       <div>  
-  <span> {currenteQuestion +1}</span> /{question.length}    
-          </div>
 
 <div className='perguntas'>
-  Questão {arr.map((teste,index)=>(
-    <span key={index}>{teste[1]}</span>
-  ))}  
-</div>
-
-{/*{arr[currenteQuestion].answers.map((answer, index)=>(
- <button 
- onClick= {()=>handleValue(answer.id)}
- key={index}>
-  {answer.name}
- </button>
+{arr.map((pergunta)=>(
+  <>
+  <p key={pergunta[0]}>Questão {pergunta[1]}</p>
+  <Res opcoes={pergunta[2]}/>
+  </>
 ))
  
 }
-*/}
 
+</div>
 
-        {/*    <Res
-            onClick={handleValue}
-           opcoes={arra1}
-           name="answer_id"
-           value={answer_id}
-          />
-            
-            */} 
-       
-             <Submit text="Confirmar"/>
-        </form>
-    
-             
+       </form>
+                 
         </C.Container>
 
     )
 }
- {/* <Res
+ 
+{/* <Res
           name="answer_id"
          // onChange={(e) => setAnswers_id(e.target.value)}
           opcoes={resposta} 
@@ -175,3 +150,37 @@ console.log(arr[0]);
       ))
          */}  
  
+         {/*  <Select 
+        text="Pergunta"
+        name="question_id"
+        onChange={(e) => setQuestion_id(e.target.value)}
+        options={question}      
+        value={question_id}
+          />
+           
+*/}
+
+ {/* <Res
+    key={teste[2].id}
+    onClick={(e)=>handleValue(teste[2].id,e)}
+   opcoes={teste[2]}
+   name="answer_id"
+   value={answer_id}
+  />
+  </>
+  ))} 
+   */}  
+
+    {/*    <Res
+            onClick={handleValue}
+           opcoes={arra1}
+           name="answer_id"
+           value={answer_id}
+          />
+           <div>  
+            <span> {currenteQuestion +1}</span> /{question.length}    
+                    </div>
+            
+            */} 
+
+           
