@@ -16,7 +16,7 @@ color:#ab79e6;
 button{
     background: #000;
     color:#fff;
-    padding:20px;
+    padding:10px;
     border-radius: 15px;
     cursor: pointer;
     margin-top: 30px;

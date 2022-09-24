@@ -7,10 +7,18 @@ align-items:center;
 text-align: center;
 justify-content: center;
 background: #fff;
-
+margin: 0;
 
 }
+.survey{
+  width:500px;
+ margin: auto;
+  border:1px solid #CDD0E8;
+ padding:25px;
+  border-radius:20px;
+//background:#000;
 
+}
 h1{
     color:#4D4D4D; 
 }

@@ -3,11 +3,11 @@ import  * as C from  './style';
 //import {Link} from 'react-router-dom';
 
 //criando o compoenet de botão 
-function Submit({ text, onClick}) {
+function Submit({ text, name,onClick}) {
   return (
     <C.Container>
     
-    <button onClick={onClick}>
+    <button name={name} onClick={onClick}>
     {text}
     </button>
    

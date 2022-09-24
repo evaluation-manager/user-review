@@ -4,28 +4,36 @@ import React from "react";
 
 import * as C from "./style";
 
-function Res({name,value, text,onClick, opcoes }) {
+function Res({name,value, text, onChange, opcoes }) {
   return (
     <C.Container>
-      <div className="container" >
-      <label htmlFor={name}>
-      {text}:
-    </label>
+<div className="container">	    
         <div  name={name}
           id={name}
-          onClick={onClick}
+          onChange={onChange}
           value={value}>
-
-    {opcoes.map((opcao)=>(   
-              
-        <button key={opcao.id}
-          value={opcao.id}>
-          {opcao.name}
-        </button>
-          
-    ))}
+          <div className="labelV">
+          <input  type={"radio"}  defaultChecked/>
+          <label >Escola a opção</label>
           </div>
-     </div>
+    {opcoes.map((opcao)=>(  
+
+      <div className="options">  
+        <label />	
+        <input key={opcao.id}
+          value={opcao.id}
+          type={"radio"}  
+        />
+
+        <label >
+            {opcao.name}	           
+            </label>	    
+
+            </div>
+      )) }	   
+
+          </div>
+          </div>
     </C.Container>
   );
 }

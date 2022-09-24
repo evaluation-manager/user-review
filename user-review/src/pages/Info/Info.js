@@ -7,13 +7,13 @@ import  * as C from  './style';
 import Res from '../../components/card/Res';
 
 export const InfoAvalicao=()=>{
-      const url= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/services' 
-      const urlQ= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/questions/answers'
-      const urlA= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes'
+     // const url= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/services' 
+     // const urlQ= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/questions/answers'
+    //  const urlA= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes'
 
-     // const url="http://localhost:5000/services";
-    // const urlQ="http://localhost:5000/questions";
-  // const urlA="http://localhost:5000/avaliacoes";
+     const url="http://localhost:5000/services";
+     const urlQ="http://localhost:5000/questions";
+   const urlA="http://localhost:5000/avaliacoes";
 
       //o que vai receber
 //const [avaliacoes,setAvaliacoes]=useState([]);
@@ -59,7 +59,7 @@ const [answer_id, setAnswers_id]=useState("");
 
       const res = await fetch(urlA, {
         method: "POST",
-      // headers: { "Content-Type": "application/json" },
+       headers: { "Content-Type": "application/json" },
         body: JSON.stringify(avaliacao)
       });
       //teste()
@@ -67,49 +67,21 @@ const [answer_id, setAnswers_id]=useState("");
     }
 
   function handleValue(id) {
-   console.log("oi")
-
-   console.log(id)
-    const next = currenteQuestion + 1;
+  // console.log("oi")
+setQuestion_id(id)
+  // console.log(id)
+  /*  const next = currenteQuestion + 1;
 
     if (next < question.length) {
       seTcurrenteQuestion(next)
-    }
+    }*/
   }
 
-//console.log(resposta)
-/*let arrar=[];
-let arra1=[];
-let array2 =[]
-
-for (let i=0; i<question.length; i++){
-  let questoes=question[i].name
-  arrar.push(questoes)
-
-  //pegando as respostas
-   let respostas=question[i].answers;
-
-  for(let j=0; j<respostas.length; j++){
-   // console.log(respostas)
-   let teste=respostas[j]
-   // arra1.push(resposta)
-   arra1.push(teste)
-   }
-
-}*/
-
-var arr = question.map(function(obj) {
-  return Object.keys(obj).map(function(key) {
-      return obj[key];
-  });
-});
-console.log(arr[0]);
-//console.log("oi",question)
     return (
         <C.Container>
      
         <form onSubmit={handleSumit}>
-       
+     <div className='survey'> 
          <Select 
         text="Serviço"
         name="servico_id"
@@ -118,60 +90,34 @@ console.log(arr[0]);
         value={service_id}
         />
         
-   {/*  <Select 
-        text="Pergunta"
-        name="question_id"
-        onChange={(e) => setQuestion_id(e.target.value)}
-        options={question}      
-        value={question_id}
-          />
-*/}
-       <div>  
-  <span> {currenteQuestion +1}</span> /{question.length}    
-          </div>
-
-<div className='perguntas'>
-  Questão {arr.map((teste,index)=>(
-    <span key={index}>{teste[1]}</span>
-  ))}  
-</div>
-
-{/*{arr[currenteQuestion].answers.map((answer, index)=>(
- <button 
- onClick= {()=>handleValue(answer.id)}
- key={index}>
-  {answer.name}
- </button>
-))
- 
-}
-*/}
-
-
-        {/*    <Res
-            onClick={handleValue}
-           opcoes={arra1}
+          
+          {question.map((pergunta) =>
+            <>
+              <span value={pergunta.id}
+                key={pergunta.id}>
+                {pergunta.name}
+              </span>
+              <Res              
+          
+           opcoes={pergunta.answers}
            name="answer_id"
-           value={answer_id}
+            value={answer_id}
+          onChange={(e) => setAnswers_id(e.target.value)}
+
           />
-            
-            */} 
-       
-             <Submit text="Confirmar"/>
+              <Submit
+             //   name="question_id"
+              //  value={question_id}
+                onClick={() => handleValue(pergunta.id)}
+                text="Confirmar" />
+            </>
+          )}
+           
+         </div>  
         </form>
     
-             
+        
         </C.Container>
 
     )
 }
- {/* <Res
-          name="answer_id"
-         // onChange={(e) => setAnswers_id(e.target.value)}
-          opcoes={resposta} 
-          value={answer_id}
-          onClick={handleButton=>setAnswers_id}
-                />
-      ))
-         */}  
- 
