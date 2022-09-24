@@ -11,12 +11,7 @@
     }
   ],
   "avaliacoes": [
-    {
-      "service_id": "1",
-      "question_id": "1",
-      "answer_id": "4",
-      "id": 1
-    }
+
   ],
   "services": [
     {
@@ -28,7 +23,6 @@
   "questions": [
     {
       "id": 1,
-      "theme_id": "1",
       "name": "Qual é sua opinião sobre a clareza das informações?",
       "answers": [
         {
@@ -43,7 +37,6 @@
     },
     {
       "id": 2,
-      "theme_id": "1",
       "name": "Foi bem atendido?",
       "answers": [
         {

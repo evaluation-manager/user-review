@@ -50,7 +50,7 @@ const [notas,setNotas]=useState([])
          // headers: { "Content-Type": "application/json" },
             body: JSON.stringify(gradess)
           });
-    
+
       const addNotas = await req.json();
       //carregamento de forma dinamica
       setNotas((prevOrgans) => [...prevOrgans, addNotas])

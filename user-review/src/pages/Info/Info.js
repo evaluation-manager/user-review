@@ -30,6 +30,7 @@ const [question_id, setQuestion_id]=useState("");
 const [answer_id, setAnswers_id]=useState("");
 
  useEffect(()=>{
+
    async function fetchDataSevice(){
     const res=await fetch(url);
     const data=await res.json();
@@ -39,12 +40,15 @@ const [answer_id, setAnswers_id]=useState("");
    fetchDataSevice();
    
    async function fetchDataQuestion(){
-    const res=await fetch(urlQ);
-    const data=await res.json();
-    setQuestion(data);
+     const res=await fetch(urlQ);
+     const data=await res.json();
+     setQuestion(data);
+  
+    }
+    
+    fetchDataQuestion()
 
-   }
-   fetchDataQuestion();
+  
 
 },[])
 
@@ -57,24 +61,19 @@ const [answer_id, setAnswers_id]=useState("");
         answer_id:answer_id
       }
 
-      const res = await fetch(urlA, {
+     /* const res = await fetch(urlA, {
         method: "POST",
        headers: { "Content-Type": "application/json" },
         body: JSON.stringify(avaliacao)
       });
       //teste()
-      
+      */
     }
 
   function handleValue(id) {
   // console.log("oi")
 setQuestion_id(id)
-  // console.log(id)
-  /*  const next = currenteQuestion + 1;
-
-    if (next < question.length) {
-      seTcurrenteQuestion(next)
-    }*/
+  //
   }
 
     return (
@@ -113,7 +112,8 @@ setQuestion_id(id)
             </>
           )}
            
-         </div>  
+          </div>  
+          
         </form>
     
         
