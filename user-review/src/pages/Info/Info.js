@@ -7,13 +7,13 @@ import  * as C from  './style';
 import Res from '../../components/card/Res';
 
 export const InfoAvalicao=()=>{
-     // const url= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/services' 
-     // const urlQ= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/questions/answers'
-    //  const urlA= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes'
+     const url= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/services' 
+     const urlQ= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/questions/answers'
+     const urlA= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes'
 
-     const url="http://localhost:5000/services";
-     const urlQ="http://localhost:5000/questions";
-   const urlA="http://localhost:5000/avaliacoes";
+    // const url="http://localhost:5000/services";
+   //  const urlQ="http://localhost:5000/questions";
+   //const urlA="http://localhost:5000/avaliacoes";
 
       //o que vai receber
 //const [avaliacoes,setAvaliacoes]=useState([]);
@@ -61,13 +61,13 @@ const [answer_id, setAnswers_id]=useState("");
         answer_id:answer_id
       }
 
-     /* const res = await fetch(urlA, {
+      const res = await fetch(urlA, {
         method: "POST",
-       headers: { "Content-Type": "application/json" },
+      // headers: { "Content-Type": "application/json" },
         body: JSON.stringify(avaliacao)
       });
       //teste()
-      */
+      
     }
 
   function handleValue(id) {

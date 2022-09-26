@@ -42,11 +42,13 @@ animation-delay:.2s;
 
 /*conteudo dos botões*/
 .ruim {
-    background: #FF0000;  
+    background: #FF0000; 
+    margin:50px;  
 }
 
 .satisfeito {
     background: #0000FF;
+    margin:50px; 
 }
 
 .legal{
@@ -83,19 +85,26 @@ span{
     color:#4D4D4D;
     font-size:20px;
 }
+/*tablet*/
+@media (max-width: 800px){
+    .qrcode{
+            background: none;
+            //background:blue;
+            display: none;
+            margin: auto;
+        }
+        .conteudo{
+    display:block;
+}
+}
 /*celular*/
 @media (max-width: 600px){
   .conteudo{
     display:block;
-  
-    
-    .container-select{
-        display:block;
-        }
-        .qrcode{
-            display:none;
-        }
-}
-}
+  }
+.qrcode{
 
+background:yellow;
+ }
+}
 `

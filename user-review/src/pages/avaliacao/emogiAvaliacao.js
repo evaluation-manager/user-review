@@ -4,7 +4,7 @@ import Submit from '../../components/button/Submit';
 
 import Select from '../../components/select/Select';
 import {BiHappyAlt,BiHappyBeaming,BiSad} from 'react-icons/bi'
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 export const UserAvaliacao = () => {
 //const url="http://localhost:5000/notas"
   const url="http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/grades";
@@ -36,6 +36,8 @@ const [notas,setNotas]=useState([])
         
 }, []);
 
+const nav=useNavigate();
+
     const handleSumit=async(e)=>{
        e.preventDefault();
             
@@ -54,10 +56,13 @@ const [notas,setNotas]=useState([])
       const addNotas = await req.json();
       //carregamento de forma dinamica
       setNotas((prevOrgans) => [...prevOrgans, addNotas])
+     
   }
   
   const status1 = () => {
+    //nav.push("/survey")
     setGrades(5)
+
   }
   const status2=()=>{
     
@@ -68,8 +73,6 @@ const [notas,setNotas]=useState([])
     setGrades(1)
   }
 
-    //funçaõ para gerar qrecode
-    //função para contar 
   let teste = notas.map((nota) => (
     nota.grades
   ))
@@ -86,31 +89,34 @@ const [notas,setNotas]=useState([])
   let filtlegal = teste.filter(biglegal)
   let filtsatisfeito = teste.filter(bigsatisfeito)
   let filtlruim = teste.filter(bigruim)
-  //console.log("oi", filtlruim );
+
+
+  
 
     return(
         <C.Container>
 <form onSubmit={handleSumit}>
           <div>
-            <Select 
+      {/*    <Select 
             options={organ}
             text="Escolha um orgão para avaliar"
             value={organ_id}
             name="organ_id"
             onChange={(e)=>setOrgan_id(e.target.value)}
             />
-         
+          */}  
           <div className='conteudo'>
             <div className='satisfeito'>
         <button name="grades" 
                 value={grades}
                 onClick={status1}
+
           >
 
         <BiHappyBeaming  size={100} style={{
               color:  "#ffffff",
               background : '#0000FF',
-             padding:'10px'
+             padding:'50px'
               }}/>   
                 <p>Satisfeito {filtsatisfeito.length }</p>    
               </button>
@@ -123,7 +129,7 @@ const [notas,setNotas]=useState([])
             <BiHappyAlt size={100} style={{
                 color:"#ffffff",
                 background: '#00FF7F',
-                padding:'10px'
+                padding:'50px'
                 }} />
                  <p>Legal  {filtlegal.length } </p> 
             </button>      
@@ -138,7 +144,7 @@ const [notas,setNotas]=useState([])
           <BiSad size={100} style={{
               color:"#ffffff",
               background: '#FF0000',
-              padding:'10px'
+              padding:'50px'
                 }} />  
                 <p>Ruim { filtlruim.length}</p>      
               </button>
@@ -148,16 +154,10 @@ const [notas,setNotas]=useState([])
       
           </div>
           </form>
-         <div className='qrcode'>
-            <div className='qrcode-msg'>
-            <span>Para responder do celular acesse o qrcode ou clique em responder </span>
+         <div className='qrcode'>         
+        Qrcode 
             </div>
-        
-            <Submit text="Acessar qrcode" />
-   
-    
-            </div>
-         <Link to="/survey">Responder</Link>
+       {/* <Link to="/survey">Responder</Link> */} 
         </C.Container>
     )
 }
