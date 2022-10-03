@@ -37,6 +37,12 @@ span{
     font-size:20px;
 }
 
+//canvas
+canvas{
+    width:220px;
+     height:60px;
+     border: 2px solid #4D4D4D;
+}
 @media (max-width: 600px){
     
     .container-select{

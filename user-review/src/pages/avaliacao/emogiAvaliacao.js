@@ -12,8 +12,7 @@ export const UserAvaliacao = () => {
    const urlO="http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/organs";
     //funçaõ para levar o página de perguntas
 
-const [organ, setOrgan]=useState([]);
-const [organ_id,setOrgan_id]=useState("");
+
 const [grades,setGrades]=useState("");
   
 //testes
@@ -23,7 +22,7 @@ const [notas,setNotas]=useState([])
     async function fetchDataOrgans(){
     const res=await fetch(urlO);
     const data=await res.json();
-    setOrgan(data);
+    //setOrgan(data);
     }
     fetchDataOrgans();
 
@@ -42,7 +41,7 @@ const nav=useNavigate();
        e.preventDefault();
             
          const gradess={
-          organ_id,
+        //  organ_id,
           grades
            
            }
