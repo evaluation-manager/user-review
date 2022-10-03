@@ -1,16 +1,23 @@
-import React  from "react";
+import React, { useState }  from "react";
 import Submit from "../../components/button/Submit";
 import  * as C from  './style';
 import { InfoAvalicao } from "./Info";
 
 export const Captcha =()=>{
+const [toglle, setToglle]=useState(false);
 
+const atulizar=()=>{
+   
+setToglle(true)
+    ///console.log("oi")
+}
     function getRandindex(maxLength){
         return Math.floor(Math.random()*maxLength)
     }
+
     let data;
 
-    function getCaptcha(data){
+    function getCaptcha(){
 let canvas=document.getElementById('canvas')
 
 let pen=canvas.getContext('2d');
@@ -40,9 +47,10 @@ pen.fillText(captch)
 
     return (
         <C.Container>
-        <h2>Faça essa verificação para continuar</h2>
-<div >
-
+      {toglle===false?
+ 
+<div className="capt">
+<h2>Faça essa verificação para continuar</h2>
     <canvas id="canvas" />
 
     <Submit text="Refresh"
@@ -52,10 +60,14 @@ pen.fillText(captch)
 placeholder="Enviar o captcha"/>
 
 <Submit text="Enviar" 
-onClick={getCaptcha}/>
+onClick={atulizar} 
+/>
+</div> :''
+ } 
 
-       {/* <InfoAvalicao/> */}
-       </div>
+{toglle===true?  <InfoAvalicao/>  :"" }
+       
+      
         </C.Container>
     )
 }

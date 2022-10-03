@@ -1,33 +1,31 @@
 import {  useEffect, useState } from 'react';
 
-
-import Select from '../../components/select/Select';
 import Submit from '../../components/button/Submit';
 import  * as C from  './style';
 import Res from '../../components/card/Res';
+import { useNavigate } from 'react-router-dom';
+
 
 export const InfoAvalicao=()=>{
-     const url= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/services' 
-     const urlQ= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/questions/answers'
-     const urlA= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes'
+   //  const url= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/services' 
+   //  const urlQ= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/questions/answers'
+  //   const urlA= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes'
 
-    // const url="http://localhost:5000/services";
-   //  const urlQ="http://localhost:5000/questions";
-   //const urlA="http://localhost:5000/avaliacoes";
+     const url="http://localhost:5000/services";
+     const urlQ="http://localhost:5000/questions";
+   const urlA="http://localhost:5000/avaliacoes";
 
-      //o que vai receber
-//const [avaliacoes,setAvaliacoes]=useState([]);
-
-       //const [exibir, setExibir]=useState(true);
        const [servico, setServico]=useState([]);
        const [question, setQuestion]=useState([]);
        //const [answers, setAnswers]=useState([]);
-const [currenteQuestion,seTcurrenteQuestion]=useState(0)
   
 //enviando para o post
 const [service_id,setService_id]=useState("");
 const [question_id, setQuestion_id]=useState("");
 const [answer_id, setAnswers_id]=useState("");
+
+const navigate=useNavigate()
+
 
  useEffect(()=>{
 
@@ -37,6 +35,7 @@ const [answer_id, setAnswers_id]=useState("");
     setServico(data);
 
    }
+
    fetchDataSevice();
    
    async function fetchDataQuestion(){
@@ -47,23 +46,23 @@ const [answer_id, setAnswers_id]=useState("");
     }
     
     fetchDataQuestion()
-
-  
-
+ 
 },[])
 
 
     const handleSumit=async(e) =>{
         e.preventDefault();
+       // navigate("/grades");
+       
       const avaliacao={
         service_id:service_id,
         question_id:question_id,
         answer_id:answer_id
       }
 
-      const res = await fetch(urlA, {
+     const res = await fetch(urlA, {
         method: "POST",
-      // headers: { "Content-Type": "application/json" },
+       headers: { "Content-Type": "application/json" },
         body: JSON.stringify(avaliacao)
       });
       //teste()
@@ -81,17 +80,11 @@ setQuestion_id(id)
      
         <form onSubmit={handleSumit}>
      <div className='survey'> 
-         <Select 
-        text="Serviço"
-        name="servico_id"
-        onChange={(e) => setService_id(e.target.value)}
-        options={servico}      
-        value={service_id}
-        />
-        
+  
           
           {question.map((pergunta) =>
             <>
+            <p>tema</p>
               <span value={pergunta.id}
                 key={pergunta.id}>
                 {pergunta.name}
@@ -104,19 +97,20 @@ setQuestion_id(id)
           onChange={(e) => setAnswers_id(e.target.value)}
 
           />
-              <Submit
+            
+            </>
+
+          )}
+             <Submit
              //   name="question_id"
               //  value={question_id}
-                onClick={() => handleValue(pergunta.id)}
+                onClick={() => handleValue()}
                 text="Confirmar" />
-            </>
-          )}
-           
           </div>  
-          
-        </form>
-    
         
+        </form>
+      
+
         </C.Container>
 
     )

@@ -37,6 +37,29 @@ span{
     font-size:20px;
 }
 
+.comments form {
+   display: block;
+ // background:greenyellow;
+ align-items:center;
+text-align: center;
+margin: auto;
+
+  
+}
+.comments input {
+width: 400px;
+display: block;
+margin: 10px;
+padding: 10px;
+}
+.comments textarea{
+    width: 400px;
+    height: 80px;
+    display: block;
+    margin: 10px;
+    padding: 10px;
+  
+}
 //canvas
 canvas{
     width:220px;

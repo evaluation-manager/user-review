@@ -3,6 +3,7 @@ import * as C from './style.js'
 import Submit from '../../components/button/Submit';
 
 import Select from '../../components/select/Select';
+
 import {BiHappyAlt,BiHappyBeaming,BiSad} from 'react-icons/bi'
 import { useNavigate } from 'react-router-dom';
 export const UserAvaliacao = () => {
@@ -12,7 +13,8 @@ export const UserAvaliacao = () => {
    const urlO="http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/organs";
     //funçaõ para levar o página de perguntas
 
-
+    const navigate=useNavigate()
+    
 const [grades,setGrades]=useState("");
   
 //testes
@@ -61,15 +63,17 @@ const nav=useNavigate();
   const status1 = () => {
     //nav.push("/survey")
     setGrades(5)
-
+   // navigate("comments")
   }
   const status2=()=>{
     
     setGrades(3)
+  //  navigate("comments")
   }
   const status3=()=>{
    
     setGrades(1)
+    //navigate("comments")
   }
 
   let teste = notas.map((nota) => (
@@ -153,9 +157,7 @@ const nav=useNavigate();
       
           </div>
           </form>
-         <div className='qrcode'>         
-        Qrcode 
-            </div>
+  
        {/* <Link to="/survey">Responder</Link> */} 
         </C.Container>
     )

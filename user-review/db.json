@@ -11,7 +11,14 @@
     }
   ],
   "avaliacoes": [
-
+    {
+      "id": 1
+    },
+    {
+      "service_id": "",
+      "answer_id": "",
+      "id": 2
+    }
   ],
   "services": [
     {
