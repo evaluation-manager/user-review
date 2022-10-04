@@ -11,18 +11,11 @@
     }
   ],
   "avaliacoes": [
-    {
-      "id": 1
-    },
-    {
-      "service_id": "",
-      "answer_id": "",
-      "id": 2
-    }
+   
   ],
   "services": [
     {
-      "name": "Atendimento",
+      "name": "Atenanswersdimento",
       "sector_id": "3",
       "id": 1
     }

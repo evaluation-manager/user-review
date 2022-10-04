@@ -3,59 +3,51 @@ import {  useEffect, useState } from 'react';
 import Submit from '../../components/button/Submit';
 import  * as C from  './style';
 import Res from '../../components/card/Res';
-import { useNavigate } from 'react-router-dom';
-
+import { useParams } from 'react-router-dom';
 
 export const InfoAvalicao=()=>{
-   //  const url= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/services' 
-   //  const urlQ= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/questions/answers'
+  
+     const urlQ= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/themes/questions'
   //   const urlA= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes'
 
-     const url="http://localhost:5000/services";
-     const urlQ="http://localhost:5000/questions";
-   const urlA="http://localhost:5000/avaliacoes";
-
-       const [servico, setServico]=useState([]);
-       const [question, setQuestion]=useState([]);
+    // const urlQ="http://localhost:5000/questions";
+  // const urlA="http://localhost:5000/avaliacoes";
+    const [theme, setTheme]=useState([]);
+    const [question, setQuestion]=useState([]);
+       
        //const [answers, setAnswers]=useState([]);
   
 //enviando para o post
-const [service_id,setService_id]=useState("");
+
 const [question_id, setQuestion_id]=useState("");
-const [answer_id, setAnswers_id]=useState("");
+//const [answer_id, setAnswers_id]=useState("");
 
-const navigate=useNavigate()
 
+const {id}=useParams();
 
  useEffect(()=>{
 
-   async function fetchDataSevice(){
-    const res=await fetch(url);
-    const data=await res.json();
-    setServico(data);
-
-   }
-
-   fetchDataSevice();
-   
-   async function fetchDataQuestion(){
-     const res=await fetch(urlQ);
-     const data=await res.json();
-     setQuestion(data);
-  
+   const getThemeQuestions= async()=>{
+     await fetch('http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/themes/questions/'+id)
+     
+     .then((Response)=>Response.json())
+     .then((ResponseJson)=>(
+      //console.log(ResponseJson)
+     setTheme(ResponseJson)
+     ))
     }
     
-    fetchDataQuestion()
+    getThemeQuestions()
  
-},[])
-
+},[id])
+//console.log("oi", theme)
 
     const handleSumit=async(e) =>{
         e.preventDefault();
        // navigate("/grades");
        
-      const avaliacao={
-        service_id:service_id,
+     const avaliacao=
+       //:service_id,
         question_id:question_id,
         answer_id:answer_id
       }
@@ -70,7 +62,7 @@ const navigate=useNavigate()
     }
 
   function handleValue(id) {
-  // console.log("oi")
+ // console.log("oi")
 setQuestion_id(id)
   //
   }
@@ -81,26 +73,25 @@ setQuestion_id(id)
         <form onSubmit={handleSumit}>
      <div className='survey'> 
   
-          
-          {question.map((pergunta) =>
+          {/*temas */}
+      {theme.map((tema) =>
             <>
-            <p>tema</p>
-              <span value={pergunta.id}
-                key={pergunta.id}>
-                {pergunta.name}
-              </span>
-              <Res              
-          
-           opcoes={pergunta.answers}
-           name="answer_id"
-            value={answer_id}
-          onChange={(e) => setAnswers_id(e.target.value)}
-
-          />
             
-            </>
+              <span value={tema.id}
+                key={tema.id}>
+                {tema.name}
+              </span>
 
+        {tema.questions.map((respostas)=>
+            <>
+         <h2>{respostas.name}</h2>
+         <Res opcoes={respostas.answers}/>
+         </>
+         )}
+        
+</>
           )}
+           
              <Submit
              //   name="question_id"
               //  value={question_id}
@@ -115,3 +106,6 @@ setQuestion_id(id)
 
     )
 }
+   // opcoesQuestions={tema.questions}
+           // opcoesRespostas={tema.questions}
+            
