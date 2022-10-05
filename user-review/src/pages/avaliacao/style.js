@@ -10,9 +10,10 @@ export const Container = styled.div`
 
    }
 .conteudo{
-    display:inline-flex;
+    display:flex;
     border-radius:5px;
-   width: 300px;
+border: solid 1px #000;
+//margin: 10px;
 }
 .ruim, .satisfeito, .legal{
   

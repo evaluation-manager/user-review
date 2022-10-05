@@ -6,13 +6,14 @@ export const Container = styled.div`
 align-items:center;
 text-align: center;
 justify-content: center;
+text-align:center;
 background: #fff;
-margin: 0;
+//margin: 0;
 
 }
 .survey{
   width:500px;
- margin: auto;
+ margin:100px auto;
   border:1px solid #CDD0E8;
  padding:25px;
   border-radius:20px;
@@ -36,14 +37,14 @@ span{
     color:#4D4D4D;
     font-size:20px;
 }
-
+.comments{
+    display:flex;
+    margin: 20px;
+}
 .comments form {
-   display: block;
+  // display: inline;
  // background:greenyellow;
- align-items:center;
-text-align: center;
-margin: auto;
-
+border: solid #CDD0E8 1px;
   
 }
 .comments input {
@@ -52,6 +53,7 @@ display: block;
 margin: 10px;
 padding: 10px;
 }
+
 .comments textarea{
     width: 400px;
     height: 80px;

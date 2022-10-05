@@ -4,17 +4,18 @@ import React from "react";
 
 import * as C from "./style";
 
-function Res({name,value, text, onChange, opcoes }) {
+function Res({name,value, text,id, onChange, opcoes }) {
   return (
     <C.Container>
 <div className="container">	    
-        <div  name={name}
+        <div 
           id={name}
           onChange={onChange}
-          value={value}>
+          value={value}
+          >
           <div className="labelV">
-          <input  type={"radio"}  defaultChecked/>
-          <label >Escola a opção</label>
+          <input  type={"radio"} />
+          <label  defaultChecked>Escola a opção</label>
           </div>
     {opcoes.map((opcao)=>(  
 
@@ -23,6 +24,7 @@ function Res({name,value, text, onChange, opcoes }) {
         <input key={opcao.id}
           value={opcao.id}
           type={"radio"}  
+          name={opcao.name}
         />
 
         <label >

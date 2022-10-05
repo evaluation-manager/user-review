@@ -12,9 +12,10 @@ export const Router =()=>{
         
         <Routes>
       
-        <Route path='/survey/:id' element={<InfoAvalicao/>}/>
-        <Route path='/grades' element={<UserAvaliacao/>}/>
+        <Route path='/survey/:id' element={<UserAvaliacao/>}/>
+      {/**  <Route path='/grades' element={<UserAvaliacao/>}/>
         <Route path='/grades/comments' element={<Comments/>}/>
+        */} 
         </Routes>
 
         </BrowserRouter>
