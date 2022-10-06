@@ -6,6 +6,7 @@ import { Captcha } from '../pages/Info/captcha';
 import { Comments } from '../pages/Info/comments';
 import { InfoAvalicao } from '../pages/Info/Info';
 
+
 export const Router =()=>{
     return (
         <BrowserRouter>

@@ -6,8 +6,8 @@ import Submit from "../../components/button/Submit";
 import { useState } from "react";
 
 export const Comments = ({grades}) => {
-  const url="http://localhost:5000/comments"
- // const url = "http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/comments";
+ // const url="http://localhost:5000/comments"
+ const url = "http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/comments";
 
   const [grades_id, setGrades_id] = useState();
   const [content, setContent] = useState("");
@@ -26,7 +26,7 @@ export const Comments = ({grades}) => {
     };
     const res = await fetch(url, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+     // headers: { "Content-Type": "application/json" },
       body: JSON.stringify(comments),
     });
     //console.log(comments)
@@ -34,6 +34,8 @@ export const Comments = ({grades}) => {
     setContent("");
     setEmail("");
 
+    ///alert("Obrigado por participar")
+    
   };
   function enviarNota(){
     setGrades_id(grades)

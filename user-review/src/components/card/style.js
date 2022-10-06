@@ -25,4 +25,10 @@ display: none;
   opacity: 1;
   border: 1px solid  #E1E2E3;
 }
+@media (max-width: 600px){
+  .options{
+  //background:blue;
+  width: 100px;
+  }
+}
 `;

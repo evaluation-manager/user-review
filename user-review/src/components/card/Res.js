@@ -4,13 +4,14 @@ import React from "react";
 
 import * as C from "./style";
 
-function Res({name,value, text,id, onChange, opcoes }) {
+function Res({name,value, onChange, opcoes, handleClick }) {
   return (
     <C.Container>
 <div className="container">	    
         <div 
           id={name}
           onChange={onChange}
+          onClick={handleClick}
           value={value}
           >
           <div className="labelV">

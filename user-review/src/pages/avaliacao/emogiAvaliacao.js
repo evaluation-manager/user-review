@@ -2,9 +2,13 @@
 
 import React, { useEffect, useState } from "react";
 import * as C from "./style.js";
-import { BiHappyAlt, BiHappyBeaming, BiSad } from "react-icons/bi";
+//import { BiHappyAlt, BiHappyBeaming, BiSad } from "react-icons/bi";
 import { useParams } from "react-router-dom";
 import { InfoAvalicao } from "../Info/Info.js";
+import PhotoSatisfeito from './satisfeito.png'
+import PhotoFeliz from './legal.png'
+import PhotoTriste from './triste.png'
+
 export const UserAvaliacao = () => {
   const { id } = useParams();
   const url = "http://localhost:5000/notas";
@@ -14,12 +18,9 @@ export const UserAvaliacao = () => {
 
   const [grades, setGrades] = useState("");
   const [theme_id, settheme_id] = useState(id);
-  const [localization, setLocalization] = useState("");
+  const [localization] = useState("48");
   //testes
   const [notas, setNotas] = useState([]);
-
-  
-  //console.log(id)
 
   useEffect(() => {
     async function fetchDataNotas() {
@@ -42,7 +43,7 @@ export const UserAvaliacao = () => {
 
     const req = await fetch(url, {
       method: "POST",
-       headers: { "Content-Type": "application/json" },
+      // headers: { "Content-Type": "application/json" },
       body: JSON.stringify(gradess),
     });
 
@@ -52,11 +53,7 @@ export const UserAvaliacao = () => {
     setToglle(false);
    
   };
-  //console.log(id)
-function enviarNota(){
-    settheme_id(id)
-   // console.log(theme_id)
-  }
+  
   const status1 = () => {
     
     setGrades(5);
@@ -98,42 +95,21 @@ function enviarNota(){
           <div className="conteudo">
             <div className="satisfeito">
               <button name="grades" value={grades} onClick={status1}>
-                <BiHappyBeaming
-                  size={100}
-                  style={{
-                    color: "#ffffff",
-                    background: "#0000FF",
-                    padding: "50px",
-                  }}
-                />
+                <img alt="Satisfeito" src={PhotoSatisfeito} />
                 <p>Satisfeito {filtsatisfeito.length}</p>
               </button>
             </div>
 
             <div className="legal">
               <button name="legal" value={grades} onClick={status2}>
-                <BiHappyAlt
-                  size={100}
-                  style={{
-                    color: "#ffffff",
-                    background: "#00FF7F",
-                    padding: "50px",
-                  }}
-                />
+              <img alt="Legal" src={PhotoFeliz} />
                 <p>Legal {filtlegal.length} </p>
               </button>
             </div>
 
             <div className="ruim">
               <button name="ruim" value={grades} onClick={status3}>
-                <BiSad
-                  size={100}
-                  style={{
-                    color: "#ffffff",
-                    background: "#FF0000",
-                    padding: "50px",
-                  }}
-                />
+              <img alt="Triste" src={PhotoTriste} />
                 <p>Ruim {filtlruim.length}</p>
               </button>
             </div>

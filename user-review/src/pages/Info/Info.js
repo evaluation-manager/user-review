@@ -4,35 +4,28 @@ import Submit from '../../components/button/Submit';
 import  * as C from  './style';
 import Res from '../../components/card/Res';
 import { useParams } from 'react-router-dom';
-import { UserAvaliacao } from '../avaliacao/emogiAvaliacao';
 import { Comments } from './comments';
 
 export const InfoAvalicao=()=>{
   
-     const urlA= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/themes/questions'
-  //   const urlA= 'http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes'
-
-    // const urlQ="http://localhost:5000/questions";
-   //const urlA="http://localhost:5000/themes";
-    const [theme, setTheme]=useState([]);
-    const [question, setQuestion]=useState([]);
-    const [totlle, setToglle]=useState(true);
-    //const [totlleComents, setToglleComents]=useState(true)
-       //const [answers, setAnswers]=useState([]);
+  // const urlA= "http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes"
+     const urlA="http://localhost:5000/avaliacoes";
   
+    const [theme, setTheme]=useState([]);
+    const [totlle, setToglle]=useState(true);
+ // const [avaliacoes,setAvaliacoes]=useState([])
 //enviando para o post
-
+const {id}=useParams();
 const [question_id, setQuestion_id]=useState("");
 const [answer_id, setAnswers_id]=useState("");
-const [grades_id, setGrades_id]=useState("");
+const [grades_id]=useState(id);
 
-const {id}=useParams();
 
  useEffect(()=>{
 
    const getThemeQuestions= async()=>{
   await fetch('http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/themes/questions/'+id)
-     //   await fetch('http://localhost:5000/themes/'+id) 
+       // await fetch('http://localhost:5000/themes/'+id) 
      .then((Response)=>Response.json())
      .then((ResponseJson)=>(
       //console.log(ResponseJson)
@@ -41,38 +34,37 @@ const {id}=useParams();
     }
     
     getThemeQuestions()
- 
+    
 },[id])
-//console.log("oi", theme)
 
     const handleSumit=async(e) =>{
         e.preventDefault();
-       // navigate("/grades");
-       
+let convertQuestion=question_id.toString()
+
      const avaliacao={
-       grades_id:grades_id,
-        question_id:question_id,
-        answer_id:answer_id
+      
+        question_id: convertQuestion,
+        answer_id:answer_id,
+        grades_id:grades_id
       }
 
-  /*   const res = await fetch(urlA, {
+    const res = await fetch(urlA, {
         method: "POST",
-       //headers: { "Content-Type": "application/json" },
+     //  headers: { "Content-Type": "application/json" },
         body: JSON.stringify(avaliacao)
-      });*/
-      //teste()
-      
+      });
+     
     }
 
   function handleValue(id) {
- console.log(id)
-//setQuestion_id(id)
+ //console.log(id)
+setQuestion_id(id)
   //
   }
   function AtualizarToglles(){
     setToglle(false)
     
-    //setToglleComents(true)
+  
   }
 
     return (
@@ -104,20 +96,20 @@ const {id}=useParams();
           opcoes={respostas.answers}
           onChange={(e)=>setAnswers_id(e.target.value)}
           />
-         </>
-         )}
- 
-         <Submit
-                onClick={() => handleValue()}
+          <Submit
+                onClick={() => handleValue(respostas.id)}
                 text="Enviar" />
               
+         </>
+         )}
+    
 </>
           )}         
             
           </div>  
           <Submit
                 onClick={AtualizarToglles}
-                text="Confirmar"  />
+                text="Finaalizar"  />
         </form>
 
          }
@@ -126,6 +118,3 @@ const {id}=useParams();
 
     )
 }
-   // opcoesQuestions={tema.questions}
-           // opcoesRespostas={tema.questions}
-            

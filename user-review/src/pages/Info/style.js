@@ -62,6 +62,9 @@ padding: 10px;
     padding: 10px;
   
 }
+.thanksUser{
+    
+}
 //canvas
 canvas{
     width:220px;
@@ -69,12 +72,17 @@ canvas{
      border: 2px solid #4D4D4D;
 }
 @media (max-width: 600px){
-    
+    .survey{
+        width:300px;
+       // display: inline;
+       padding:10px;
+    }
     .container-select{
         display:block;
         }
         .qrcode{
             display:none;
         }
+        
 }
 `;

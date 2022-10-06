@@ -13,11 +13,12 @@ export const Container = styled.div`
     display:flex;
     border-radius:5px;
 border: solid 1px #000;
-//margin: 10px;
+margin-top: 150px;
+justify-content: space-around;
 }
 .ruim, .satisfeito, .legal{
   
-   filter:drop-shadow(0px 0px 1px #4b4b50);
+filter:drop-shadow(0px 0px 1px #4b4b50);
 animation:flutuar 3s linear infinite;
 
 }
@@ -41,32 +42,11 @@ button{
 animation-delay:.2s;
 }
 
-/*conteudo dos botões*/
-.ruim {
-    background: #FF0000; 
-    margin:50px;  
-}
 
-.satisfeito {
-    background: #0000FF;
-    margin:50px; 
+img{
+    width: 300px;
+margin: 3px;
 }
-
-.legal{
-    background: #00FF7F;
-    margin:50px;    
-}
-/*.legal:hover{
-//width:200px;
-}   
-.satisfeito:hover{
-width:200px;
-
-}
-.ruim:hover{
-    width:200px;
-
-}*/
 a{
     background:#000;
     text-decoration: none;
@@ -87,6 +67,7 @@ span{
     font-size:20px;
 }
 /*tablet*/
+
 @media (max-width: 800px){
     .qrcode{
             background: none;
@@ -102,10 +83,13 @@ span{
 @media (max-width: 600px){
   .conteudo{
     display:block;
+    border: none;
+  
   }
-.qrcode{
+  .ruim, .satisfeito, .legal{
+    filter:none;
+    margin: 15px;
+  }
 
-background:yellow;
- }
 }
 `
