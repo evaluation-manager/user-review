@@ -11,13 +11,13 @@ import PhotoTriste from './triste.png'
 
 export const UserAvaliacao = () => {
   const { id } = useParams();
-  const url = "http://localhost:5000/notas";
-  //const url="http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/grades";
+ // const url = "http://localhost:5000/notas";
+  const url="http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/grades";
 
   const [totlle, setToglle] = useState(true);
 
   const [grades, setGrades] = useState("");
-  const [theme_id, settheme_id] = useState(id);
+  const [theme_id] = useState(id);
   const [localization] = useState("48");
   //testes
   const [notas, setNotas] = useState([]);

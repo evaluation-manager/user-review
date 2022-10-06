@@ -8,8 +8,8 @@ import { Comments } from './comments';
 
 export const InfoAvalicao=()=>{
   
-  // const urlA= "http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes"
-     const urlA="http://localhost:5000/avaliacoes";
+   const urlA= "http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes"
+    // const urlA="http://localhost:5000/avaliacoes";
   
     const [theme, setTheme]=useState([]);
     const [totlle, setToglle]=useState(true);
