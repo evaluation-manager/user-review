@@ -12,7 +12,7 @@ export const Container = styled.div`
 .conteudo{
     display:flex;
     border-radius:5px;
-border: solid 1px #000;
+//border: solid 1px #000;
 margin-top: 150px;
 justify-content: space-around;
 }
@@ -38,9 +38,6 @@ button{
     }
 }
 
-.conteudo .ruim:nth-child(2){
-animation-delay:.2s;
-}
 
 
 img{
@@ -68,28 +65,41 @@ span{
 }
 /*tablet*/
 
-@media (max-width: 800px){
-    .qrcode{
-            background: none;
-            //background:blue;
-            display: none;
-            margin: auto;
-        }
+@media (max-width: 700px){
         .conteudo{
     display:block;
+    border: none;
+  //  background:#000;
 }
 }
 /*celular*/
-@media (max-width: 600px){
+@media (max-width: 500px){
   .conteudo{
     display:block;
     border: none;
-  
+   // background:blue;
+    margin: 50px;
+    
   }
   .ruim, .satisfeito, .legal{
     filter:none;
-    margin: 15px;
+    margin: 5px;
+  // width: 10px;
   }
+  img{
+    width: 200px;
+  }
+  span{
+    display: none;
+  }
+
+  @keyframes flutuar{
+    0%,
+    100%{
+    transform:none;
+  }
+
+}
 
 }
 `

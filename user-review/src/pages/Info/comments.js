@@ -6,15 +6,14 @@ import Submit from "../../components/button/Submit";
 import { useState } from "react";
 
 export const Comments = ({grades}) => {
- // const url="http://localhost:5000/comments"
- const url = "http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/comments";
+ //const url="http://localhost:5000/comments"
+const url = "http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/comments";
 
   const [grades_id, setGrades_id] = useState();
   const [content, setContent] = useState("");
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
 
-  //console.log(grades)
 
   const submit = async (e) => {
     e.preventDefault();
@@ -26,7 +25,7 @@ export const Comments = ({grades}) => {
     };
     const res = await fetch(url, {
       method: "POST",
-     // headers: { "Content-Type": "application/json" },
+      //headers: { "Content-Type": "application/json" },
       body: JSON.stringify(comments),
     });
     //console.log(comments)
@@ -44,20 +43,22 @@ export const Comments = ({grades}) => {
     <C.Container>
       <div className="comments">
         <form onSubmit={submit}>
-         <h2>Colabore com algum informação</h2>
+         <h2>Colabore com algumas informações</h2>
          <p name="grades_id"
          value={grades_id}>
-            Sua nota foi <strong>{grades}</strong>  queremos saber quais motivos te levaram a dar ela 
+            Sua nota foi <strong>{grades}</strong>  queremos saber quais motivos te levaram a isso 
             </p>
           <label>Nome</label>
           <input
             placeholder="Nome"
+            required
             name="name"
             value={name}
             onChange={(e) => setName(e.target.value)}
           />
           <label>Email</label>
-          <input
+          <input 
+          required
             placeholder="E-mail"
             name="name"
             value={email}
@@ -66,6 +67,7 @@ export const Comments = ({grades}) => {
           <label>Conteúdo</label>
 
           <textarea
+           required
             name="name"
             value={content}
             onChange={(e) => setContent(e.target.value)}
@@ -75,6 +77,7 @@ export const Comments = ({grades}) => {
           <Submit text="Deixa seu comentário" 
           onClick={enviarNota}
            />
+           <span>Se não quiser, basta fechar a página</span>
         </form>
       </div>
     </C.Container>

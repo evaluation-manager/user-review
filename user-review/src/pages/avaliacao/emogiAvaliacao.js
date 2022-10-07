@@ -5,9 +5,9 @@ import * as C from "./style.js";
 //import { BiHappyAlt, BiHappyBeaming, BiSad } from "react-icons/bi";
 import { useParams } from "react-router-dom";
 import { InfoAvalicao } from "../Info/Info.js";
-import PhotoSatisfeito from './satisfeito.png'
-import PhotoFeliz from './legal.png'
-import PhotoTriste from './triste.png'
+import PhotoSatisfeito from './happy.png'
+import PhotoFeliz from './fine.png'
+import PhotoTriste from './sad.png'
 
 export const UserAvaliacao = () => {
   const { id } = useParams();
@@ -21,6 +21,7 @@ export const UserAvaliacao = () => {
   const [localization] = useState("48");
   //testes
   const [notas, setNotas] = useState([]);
+  const [theme, setTheme]=useState([]);
 
   useEffect(() => {
     async function fetchDataNotas() {
@@ -28,8 +29,20 @@ export const UserAvaliacao = () => {
       const data = await res.json();
       setNotas(data);
     }
-    fetchDataNotas();
-  }, []);
+    fetchDataNotas()
+
+    const getThemeQuestions= async()=>{
+      await fetch('http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/themes/questions/'+id)
+           // await fetch('http://localhost:5000/themes/'+id) 
+         .then((Response)=>Response.json())
+         .then((ResponseJson)=>(
+          
+         setTheme(ResponseJson)
+         ))
+        }
+        
+        getThemeQuestions()
+  }, [id]);
 
   const handleSumit = async (e) => {
     e.preventDefault();
@@ -83,6 +96,10 @@ export const UserAvaliacao = () => {
   let filtsatisfeito = teste.filter(bigsatisfeito);
   let filtlruim = teste.filter(bigruim);
 
+  let name=theme.map((names)=>(
+    names.name
+  ))
+  //console.log(name)
   return (
     <C.Container>
       {totlle === true ? (
@@ -90,7 +107,7 @@ export const UserAvaliacao = () => {
         <form onSubmit={handleSumit}>
         <span name="theme_id" 
         value={theme_id}>
-          O tema em que voce esta dando nota é {id}
+          O tema em que voce esta dando nota é {name}
           </span>
           <div className="conteudo">
             <div className="satisfeito">

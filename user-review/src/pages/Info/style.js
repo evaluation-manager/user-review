@@ -6,7 +6,6 @@ export const Container = styled.div`
 align-items:center;
 text-align: center;
 justify-content: center;
-text-align:center;
 background: #fff;
 //margin: 0;
 
@@ -17,7 +16,6 @@ background: #fff;
   border:1px solid #CDD0E8;
  padding:25px;
   border-radius:20px;
-//background:#000;
 
 }
 h1{
@@ -32,40 +30,53 @@ h1{
     margin:30px;
 }
 
-span{
+span,p{
     text-align: center;
     color:#4D4D4D;
     font-size:20px;
 }
 .comments{
     display:flex;
-    margin: 20px;
+    margin: 150px;
+   
 }
 .comments form {
-  // display: inline;
- // background:greenyellow;
+ 
 border: solid #CDD0E8 1px;
-  
+ 
 }
 .comments input {
-width: 400px;
+width: 500px;
 display: block;
-margin: 10px;
 padding: 10px;
+margin: 15px;
+
 }
 
 .comments textarea{
-    width: 400px;
+    width: 500px;
     height: 80px;
     display: block;
-    margin: 10px;
+    margin: 15px;
     padding: 10px;
   
 }
-.thanksUser{
-    
+.comments button{
+margin: 10px;
+padding: 20px;
 }
-//canvas
+
+.notfound{
+margin: 150px;
+
+}
+.notfound h2{
+    text-align:center;
+}
+img{
+    width: 600px;
+}
+
 canvas{
     width:220px;
      height:60px;
@@ -74,15 +85,36 @@ canvas{
 @media (max-width: 600px){
     .survey{
         width:300px;
-       // display: inline;
        padding:10px;
     }
-    .container-select{
-        display:block;
-        }
         .qrcode{
             display:none;
         }
-        
+        img{
+    width: 300px;
+
+}
+.comments{
+    margin: 12px;
+    
+}
+.comments input{
+    width: 300px;
+margin:22px;
+  
+}
+.comments textarea{
+   // display: inline-block;
+    width: 300px;
+    height: 40px;
+    margin:22px;
+}
+.comments button{
+    padding: 10px;
+}
+.comments span, p{
+display: none;
+}
+
 }
 `;
