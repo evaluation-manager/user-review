@@ -65,15 +65,19 @@ span{
 }
 /*tablet*/
 
-@media (max-width: 700px){
+@media (max-width: 800px){
         .conteudo{
     display:block;
     border: none;
-  //  background:#000;
+  //background:#000;
+}
+.ruim, .satisfeito, .legal{
+  margin: 4px;
+  filter:none;
 }
 }
 /*celular*/
-@media (max-width: 500px){
+@media (max-width: 400px){
   .conteudo{
     display:block;
     border: none;

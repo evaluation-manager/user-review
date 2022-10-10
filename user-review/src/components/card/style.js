@@ -16,10 +16,11 @@ export const Container = styled.div`
   display: flex;
   padding:15px;
   width:400px;
+  justify-content:start;
   }
 .labelV{
 background: #E1E2E3;
-display: none;
+//display: none;
 }
   .options:hover {
   opacity: 1;

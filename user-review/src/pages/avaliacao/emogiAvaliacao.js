@@ -11,8 +11,8 @@ import PhotoTriste from './sad.png'
 
 export const UserAvaliacao = () => {
   const { id } = useParams();
- // const url = "http://localhost:5000/notas";
-  const url="http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/grades";
+  const url = "http://localhost:5000/notas";
+ // const url="http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes/grades";
 
   const [totlle, setToglle] = useState(true);
 
@@ -25,9 +25,13 @@ export const UserAvaliacao = () => {
 
   useEffect(() => {
     async function fetchDataNotas() {
-      const res = await fetch(url);
-      const data = await res.json();
-      setNotas(data);
+       await fetch(url)
+       .then((Response)=>Response.json())
+       .then((ResponseJson)=>(
+       //console.log(ResponseJson)    
+        setNotas(ResponseJson)
+       ))
+//console.log(notas)    
     }
     fetchDataNotas()
 
@@ -81,7 +85,7 @@ export const UserAvaliacao = () => {
    
   };
 
-  let teste = notas.map((nota) => nota.grades);
+  let arrayNotas = notas.map((nota) => nota.grades);
 
   function bigsatisfeito(value) {
     return value === 5;
@@ -92,9 +96,9 @@ export const UserAvaliacao = () => {
   function bigruim(value) {
     return value === 1;
   }
-  let filtlegal = teste.filter(biglegal);
-  let filtsatisfeito = teste.filter(bigsatisfeito);
-  let filtlruim = teste.filter(bigruim);
+  let filtlegal = arrayNotas.filter(biglegal);
+  let filtsatisfeito = arrayNotas.filter(bigsatisfeito);
+  let filtlruim = arrayNotas.filter(bigruim);
 
   let name=theme.map((names)=>(
     names.name
@@ -127,7 +131,7 @@ export const UserAvaliacao = () => {
             <div className="ruim">
               <button name="ruim" value={grades} onClick={status3}>
               <img alt="Triste" src={PhotoTriste} />
-                <p>Ruim {filtlruim.length}</p>
+                <p>Ruim {filtlruim.length} </p>
               </button>
             </div>
           </div>
@@ -141,3 +145,7 @@ export const UserAvaliacao = () => {
 };
 //{totlle ===true ?
 //<Comments/>
+/*{filtlruim.length}
+{filtlegal.length}
+{filtsatisfeito.length}
+*/

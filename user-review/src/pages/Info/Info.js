@@ -8,8 +8,8 @@ import { Comments } from './comments';
 
 export const InfoAvalicao=()=>{
   
-   const urlA= "http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes"
-    // const urlA="http://localhost:5000/avaliacoes";
+  // const urlA= "http://local.avaliacao.online.maceio.al.gov.br/api/avaliacoes"
+     const urlA="http://localhost:5000/avaliacoes";
   
     const [theme, setTheme]=useState([]);
     const [totlle, setToglle]=useState(true);
@@ -39,18 +39,18 @@ const [grades_id]=useState(id);
 
     const handleSumit=async(e) =>{
         e.preventDefault();
-let convertQuestion=question_id.toString()
+//let convertQuestion=question_id.toString()
 
      const avaliacao={
       
-        question_id: convertQuestion,
+        question_id:  question_id,
         answer_id:answer_id,
         grades_id:grades_id
       }
 
     const res = await fetch(urlA, {
         method: "POST",
-     //  headers: { "Content-Type": "application/json" },
+       headers: { "Content-Type": "application/json" },
         body: JSON.stringify(avaliacao)
       });
      
@@ -59,13 +59,19 @@ let convertQuestion=question_id.toString()
   function handleValue(id) {
  //console.log(id)
 setQuestion_id(id)
-  //
+   //handlecolor()
+  
   }
+
   function AtualizarToglles(){
     setToglle(false)
     
   
   }
+function handlecolor(color, id){
+//console.log(background:"#fff")
+//handleValue()
+}
 
     return (
         <C.Container>
@@ -74,41 +80,58 @@ setQuestion_id(id)
         <form onSubmit={handleSumit}>
      <div className='survey'> 
   
-          {/*temas */}
-      {theme.map((tema) =>
+      {theme.map((tema, index) =>
             <>
-            
-              <span value={tema.id}
-                key={tema.id}>
+              <span 
+              value={tema.id}
+                key={index}>
                 {tema.name}
               </span>
 
-        {tema.questions.map((respostas)=>
-            <>
+        {tema.questions.map((respostas,index)=>
+            <div className='Questions'>
+
          <h2 
-         onChange={e=>setQuestion_id(e.target.value)} 
-         name="question_id">
+        onChange={e=>setQuestion_id(respostas.id)}
+         name="question_id" key={index}>
           {respostas.name}
           </h2>
-         <Res
-         value={answer_id}
-         name="answer_id"
-          opcoes={respostas.answers}
-          onChange={(e)=>setAnswers_id(e.target.value)}
+
+          <div className='respostas'>
+          {respostas.answers.map((resposta, index)=>
+          <>
+
+          <input 
+          name="answer_id" 
+          key={index} 
+          value={answer_id}
+          type={"radio"}  
+          
+          onChange={e=>setAnswers_id(resposta.id)}
           />
-          <Submit
-                onClick={() => handleValue(respostas.id)}
-                text="Enviar" />
-              
-         </>
-         )}
+
+          <label >
+             {resposta.name} 
+             </label>
+            
+   </>
+   
+          )}
     
+   </div> 
+   <Submit
+    onClick={() => handleValue(respostas.id )}
+    text="Enviar" />
+              
+         </div>
+         )}
 </>
           )}         
             
           </div>  
           <Submit
-                onClick={AtualizarToglles}
+               // onClick={AtualizarToglles}
+             //onClick={handleValue}
                 text="Finaalizar"  />
         </form>
 
@@ -118,3 +141,13 @@ setQuestion_id(id)
 
     )
 }
+/**value={answer_id}
+ * onChange={e=>setQuestion_id("oi")}
+     // name="answer_id"
+      // opcoes={respostas.answers}
+      // onChange={(e)=>setAnswers_id(e.target.value)}
+        <Submit
+    //onClick={() => handleValue(respostas.id )}
+    text="Enviar" />
+      
+      */

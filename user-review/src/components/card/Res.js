@@ -8,37 +8,44 @@ function Res({name,value, onChange, opcoes, handleClick }) {
   return (
     <C.Container>
 <div className="container">	    
-        <div 
-          id={name}
-          onChange={onChange}
-          onClick={handleClick}
-          value={value}
-          >
-          <div className="labelV">
-          <input  type={"radio"} />
-          <label  defaultChecked>Escola a opção</label>
-          </div>
-    {opcoes.map((opcao)=>(  
 
+<input type="radio"  />
+ <label>teste</label>
+    {opcoes.map((opcao, index)=>(  
+      <>
+     
       <div className="options">  
-        <label />	
-        <input key={opcao.id}
+    
+        <input
+         key={index}
           value={opcao.id}
-          type={"radio"}  
-          name={opcao.name}
+          type="radio"  
+         name={opcao.name}
+        //  onChange={onChange}
+     
         />
 
-        <label >
+        <label>
             {opcao.name}	           
             </label>	    
 
             </div>
+            </>
       )) }	   
 
           </div>
-          </div>
+         
     </C.Container>
   );
 }
 
 export default Res;
+/**
+ <input
+ type="radio" 
+id={name}
+value={value}
+name={name}
+onChange={onChange}
+ />
+ */

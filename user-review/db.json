@@ -5,28 +5,6 @@
       "theme_id": "3",
       "localization": "",
       "id": 1
-    },
-    {
-      "id": 2
-    },
-    {
-      "id": 3
-    },
-    {
-      "id": 4
-    },
-    {
-      "id": 5
-    }
-  ],
-  "organs": [
-    {
-      "name": "Semec",
-      "id": 1
-    },
-    {
-      "name": "Esporte",
-      "id": 2
     }
   ],
   "avaliacoes": [
@@ -41,7 +19,14 @@
       "answer_id": "7",
       "grades_id": "3",
       "id": 2
+    },
+    {
+      "question_id": "",
+      "answer_id": 11,
+      "grades_id": "1",
+      "id": 3
     }
+   
   ],
   "themes": [],
   "comments": [
@@ -51,9 +36,6 @@
       "name": "carlos",
       "email": "eamil@emgail.com",
       "id": 1
-    },
-    {
-      "id": 2
     }
   ]
 }
