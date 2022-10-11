@@ -130,9 +130,9 @@ function handlecolor(color, id){
             
           </div>  
           <Submit
-               // onClick={AtualizarToglles}
+               onClick={AtualizarToglles}
              //onClick={handleValue}
-                text="Finaalizar"  />
+                text="Finalizar"  />
         </form>
 
          }
